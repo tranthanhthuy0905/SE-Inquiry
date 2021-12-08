@@ -1,6 +1,6 @@
 # SE-Inquiry
 
-## Node version: *14+*
+## Node version:    *14+*
 
 ## Installation:
 
