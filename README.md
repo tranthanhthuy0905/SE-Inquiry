@@ -5,5 +5,5 @@
 ## Installation:
 
 > Front-end:
-1. ```cd frontend/inquiry```
+1. ```cd frontend```
 2. ``` npm install ```
