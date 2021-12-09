@@ -4,3 +4,8 @@ appengine-generated/
 *.env
 *.node_modules/
 node_modules/
+
+# Mac-specific
+.DS_Store
+
+*/.gitignore/
