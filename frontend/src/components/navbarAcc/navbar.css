@@ -212,14 +212,19 @@ nav {
   position: relative;
   display: none;
 }
+.notBtn {
+  width: 50px;
+  height: 50px;
+}
 .notification-bell {
   font-size: 25pt;
   padding-bottom: 7px;
   color: white;
   margin-right: 25px;
   margin-left: 40px;
-  justify-content: center;
-  align-items: center;
+  justify-content: right;
+  align-items: right;
+  float: right;
 }
 .notification-bell:hover {
   color: black;
@@ -279,6 +284,12 @@ a:visited {
   justify-content: space-between;
   letter-spacing: var(--spacing);
   margin-right: 30px;
+}
+.number {
+  position: relative;
+  top: 0;
+  right: 0;
+  float: right;
 }
 @media screen and (min-width: 800px) {
   .nav-center {

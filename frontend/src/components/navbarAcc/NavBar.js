@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBell, faFolderOpen, faBars} from "@fortawesome/free-solid-svg-icons";
-import {links} from '../data/navbar';
-import logo from '../assets/logo.png';
+import {links} from '../../data/navbar';
+import logo from '../../assets/logo.png';
 import './navbar.css';
-import avatar from '../assets/avatar.png';
+import avatar from '../../assets/avatar.png';
 
 const NavBar = () => {
     const [result, setResult] = useState('');
@@ -67,7 +67,7 @@ const NavBar = () => {
               <a href = "notification">
                 <div class = "notBtn" href = "#">
                   {/* Number supports double digets and automaticly hides itself when there is nothing between divs */}
-                  <div class = "number">{totalNotification}</div>
+                  <div className = "number">{totalNotification}</div>
                   <FontAwesomeIcon icon={faBell} className='notification-bell'>
                   <div class = "display">
                     <div class = "nothing"> 
