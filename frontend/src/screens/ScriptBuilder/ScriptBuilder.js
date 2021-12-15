@@ -1,12 +1,14 @@
 import React from 'react'
-import NavBar from '../../components/navbarAcc/NavBar'
+import NavBar from '../../components/navbar/NavBar'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from 'react-router-dom';
 
 const ScriptBuilder = () => {
+    let navigate = useNavigate();
 
-    const onCreateScript = async () => {
-        return 0;
+    const onCreateScript = () => {
+        navigate('/script-creating');
     }
 
     return (

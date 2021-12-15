@@ -33,7 +33,6 @@ const NavBar = () => {
             <img src={logo} className='logo' alt='logo' /> 
             <FontAwesomeIcon icon={faBars} className='nav-toggle'/>
           </div>
-          
           <div className = 'initial-container'>
 
             {/* Links */}
