@@ -6,4 +6,5 @@
 
 > Front-end:
 1. ```cd frontend```
-2. ``` npm install ```
+2. ``` yarn install ```
+3. ``` yarn start ```

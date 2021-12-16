@@ -1,22 +1,17 @@
-import './App.css';
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Menu from "./screens/Menu/menu"
+import ScriptBuilder from "./screens/ScriptBuilder/ScriptBuilder";
+import ScriptCreate from "./screens/ScriptCreate/ScriptCreate";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/main-menu" element={<Menu/>}/>
+        <Route path="/script-building" element={<ScriptBuilder />}/>
+        <Route path="/script-creating" element={<ScriptCreate/>}/>
+      </Routes>
+    </Router>
   );
 }
 
