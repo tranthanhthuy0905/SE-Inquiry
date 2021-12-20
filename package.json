@@ -6,6 +6,9 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@next-tools/dynamic": "^0.0.11",
+    "draft-js": "^0.11.7",
+    "react-draft-wysiwyg": "^1.14.7",
     "react-icons": "^4.3.1",
     "react-router-dom": "6"
   }

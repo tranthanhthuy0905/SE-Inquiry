@@ -8,13 +8,9 @@ import './navbar.css';
 const NavBarCreate = () => {
     const [name, setName] = useState('Untitled');
 
-    const handleNameChange = (name) => {
-        // console.log(e.target.value);
-        // if (e.key === 'Enter') {
-        //     console.log(e);
-        //     setName(e.target.value);
-        // }
-        setName(name);
+    const handleNameChange = (val) => {
+        setName(val.target.value);
+        // Save data here
     }
 
     const handleCancel = (e) => {
@@ -43,11 +39,11 @@ const NavBarCreate = () => {
                     </ul>
                 </div>
                 <div className='navbar-center'>
-                    <input type="text" name="script-name" onChange={handleNameChange} value={name}/>
+                    <input className="input-name" type="text" name="script-name" onChange={handleNameChange} value={name}/>
                 </div>
                 <div className='navbar-footer'>
-                    <button className='cancel' type='button' onClick={handleCancel}>Cancel</button>
-                    <button className='save' type='submit' onSubmit={handleSave}>Save</button>
+                    <button className='btn' type='button' onClick={handleCancel}>Cancel</button>
+                    <button className='btn' type='submit' onSubmit={handleSave}>Save</button>
                 </div>
             </div>
         </nav>
