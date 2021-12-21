@@ -1,8 +1,8 @@
 import React from "react";
 import "./CreatePage.css";
 import NavBarCreate from "../../components/navbar/NavBarCreate";
-import LeftMenu from "../../components/menu-left/LeftMenu";
-import Menu from "../../components/menu-right/Menu";
+import LeftMenu from "../../components/sidebar-left/LeftMenu";
+import Menu from "../../components/sidebar-right/SideBar";
 import { chapters } from "../../data/ChapterList/ChapterList";
 import { choices } from "../../data/ChoiceList";
 
