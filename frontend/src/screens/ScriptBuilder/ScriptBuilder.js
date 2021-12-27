@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import NavBar from '../../components/navbar/NavBar'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router-dom';
 
 const ScriptBuilder = () => {
+    
     let navigate = useNavigate();
 
     const onCreateScript = () => {

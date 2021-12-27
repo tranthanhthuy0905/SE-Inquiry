@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ScriptRepository  extends JpaRepository<Script, UUID> {
 
-    Script updateScriptById(UUID scriptID, Script script);
+    //Script saveScriptById(UUID scriptID, Script script);
 }

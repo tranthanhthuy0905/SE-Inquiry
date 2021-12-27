@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "choice_db")
 public class Choice {
@@ -54,13 +54,16 @@ public class Choice {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public Choice(@JsonProperty("textID") UUID textID,
-                  @JsonProperty("content") String content, @JsonProperty("createdAt") Timestamp createdAt,
-                  @JsonProperty("updatedAt") Timestamp updatedAt) {
+    // constructor
+    public Choice(@JsonProperty("textId") UUID textID, @JsonProperty("choiceId") UUID choiceID,
+                  @JsonProperty("content") String content, @JsonProperty("created_at") Timestamp createdAt,
+                  @JsonProperty("updated_at") Timestamp updatedAt) {
         this.choiceID = UUID.randomUUID();
         this.textID = textID;
         this.content = content;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        Date date = new Date();
+        Timestamp time = new Timestamp(date.getTime());
+        this.createdAt = time;
+        this.updatedAt = time;
     }
 }

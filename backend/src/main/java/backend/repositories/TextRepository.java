@@ -13,9 +13,9 @@ public interface TextRepository extends JpaRepository<Text, UUID> {
 
     List<Text> findTextsByScriptID(UUID scriptID);
 
-    UUID findScriptIDFromText(UUID textID);
+    UUID findScriptIDByTextID(UUID textID);
 
-    Text updateTextById(UUID textID, Text text);
-
-    Text updateTextByScriptID(UUID scriptID, Text text);
+//    Text updateTextById(UUID textID, Text text);
+//
+//    Text updateTextByScriptID(UUID scriptID, Text text);
 }
