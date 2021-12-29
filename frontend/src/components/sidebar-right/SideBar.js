@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import 'antd/dist/antd.css';
 import { Select } from 'antd';
+import './sidebar.css';
 import { BoldOutlined, ItalicOutlined, UnderlineOutlined, 
 AlignCenterOutlined, AlignLeftOutlined, AlignRightOutlined, OrderedListOutlined, UnorderedListOutlined } from '@ant-design/icons';
 
@@ -67,13 +68,7 @@ const SideBar = () => {
         right: 0,
     }
 
-    const leftSidebar = () => {
-        return (
-            <div style={{backgroundColor: 'black'}}>
-                <button>Page</button>
-            </div>
-        )
-    }
+
     return (
         <aside className='sidebar'>
             <div className='sidebar-header'>

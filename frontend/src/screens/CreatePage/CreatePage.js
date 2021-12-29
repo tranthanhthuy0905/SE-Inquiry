@@ -2,6 +2,7 @@ import React from "react";
 import "./CreatePage.css";
 import NavBarCreate from "../../components/navbar/NavBarCreate";
 import LeftMenu from "../../components/sidebar-left/LeftMenu";
+import SideBar from '../../components/sidebar-right/SideBar';
 import Menu from "../../components/sidebar-right/SideBar";
 import { chapters } from "../../data/ChapterList/ChapterList";
 import { choices } from "../../data/ChoiceList";
@@ -11,15 +12,8 @@ const CreatePage = () => {
         <body className="create-page">
             <NavBarCreate/>
             <LeftMenu/>
-            <Menu/>
-
-            `<div className ="editor-canvas">
-                <box className="page-title-box">
-                    <h5 className="title-label" contentEditable="true">Page Title</h5>
-                    <input className="title-input" placeholder="Page 0: Begin Writing here"></input>
-                    <h5 className="title-helper">Writer notes</h5>
-                </box>
-
+            <SideBar/>
+            <div className ="editor-canvas">
                 <box className="page-desc-box">
                     <h5 className="desc-label" contentEditable="true">Page Description</h5>
                     <textarea className="desc-input" rows="10" placeholder="This page is about: begin writing here"></textarea>
@@ -28,7 +22,6 @@ const CreatePage = () => {
 
                 <box className="choice-box">
                     <h5 className="choice-label" contentEditable="true">Choice Section</h5>
-                    <input className="choice-desc" rows="1" placeholder="List the choice here:"></input>
                     <ul className='choice-list'>
                         {choices.map((choice) => {
                                 const { id, placeholder } = choice;
@@ -39,9 +32,7 @@ const CreatePage = () => {
                     </ul>
                     <h5 className="choice-helper">Writer notes</h5>
                 </box>
-
             </div>
-            
         </body>
     )
 

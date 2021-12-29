@@ -3,6 +3,7 @@ import '../Menu/menu.css';
 import NavBar from '../../components/navbar/NavBar';
 import { categories } from '../../data/Menu/categories';
 import { stories } from '../../data/story-test';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Menu = () => {
     const listCategory = () => {
@@ -42,15 +43,11 @@ const Menu = () => {
                                 <image className="story-picture" src ={picture}></image>
                                 <h3 className="story-title">{title}</h3>
                                 <div className="story-info">
-                                    <div className="book-open-box">
-                                        <img className="book-open-vector" src="../../assets/book-open.png" alt=""></img>
-                                    </div>
+                                    <FontAwesomeIcon icon="fas fa-book-open" />
                                     <div className="view-count-box">
                                         <span  className="view-count">{view} viewed</span>
                                     </div>
-                                    <div className="tag-box">
-                                        <img className="tag-vector" src="../../assets/tag.png" alt=""></img>
-                                    </div>
+                                    <FontAwesomeIcon icon="fa-solid fa-tag" />
                                     <div className="type-tag-box">
                                         <span  className="type-tag">{tag}</span>
                                     </div>
@@ -59,9 +56,8 @@ const Menu = () => {
                                         <span  className="description-detail">{description}</span>
                                     </div>
                                 </div>
-                                <div className="star-box">
-                                    <img className="star-vector" src="../../assets/star.png" alt=""></img>
-                                </div>
+                                
+                                <FontAwesomeIcon icon="fa-solid fa-star" />
 
                                 <div  className="rating">{rating}</div>   
                                 <button className="read-button" onClick={readStory}>Read</button>

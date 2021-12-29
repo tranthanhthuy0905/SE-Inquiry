@@ -27,8 +27,8 @@ const NavBarCreate = () => {
 
     return (
         <nav>
-            <div className='nav-center'>
-                <div className='nav-header'>
+            <div className='creator-nav'>
+                <div className='creator-header'>
                     <img src={logo} className='logo' alt='logo' /> 
                     <FontAwesomeIcon icon={faBars} className='nav-toggle'/>
                     <ul className='utils-list'>
@@ -42,10 +42,10 @@ const NavBarCreate = () => {
                         })}
                     </ul>
                 </div>
-                <div className='navbar-center'>
-                    <input type="text" name="script-name" onChange={handleNameChange} value={name}/>
+                <div className='creator-center'>
+                    <input type="text" className="script-name" onChange={handleNameChange} value={name}/>
                 </div>
-                <div className='navbar-footer'>
+                <div className='creator-footer'>
                     <button className='cancel' type='button' onClick={handleCancel}>Cancel</button>
                     <button className='save' type='submit' onSubmit={handleSave}>Save</button>
                 </div>

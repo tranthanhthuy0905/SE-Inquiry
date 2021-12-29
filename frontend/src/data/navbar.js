@@ -17,7 +17,7 @@ export const links = [
     },
     {
         id: 4,
-        url: '/builder',
+        url: '/script-building',
         text: 'Script Builder',
     }
 ]

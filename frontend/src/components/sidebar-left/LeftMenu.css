@@ -12,9 +12,8 @@ body {
   width: 240px;
   height: 658px;
 
-  border: 1px solid #cccccc;
-  box-sizing: border-box;
   position: absolute;
+  top: 73px;
 }
 
 .button-list {
@@ -183,8 +182,8 @@ body {
   left: 0px;
   top: 150px;
 
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  border-top: solid 2px var(--clr-grey-8);
+  border-bottom: solid 2px var(--clr-grey-8);
 }
 
 .page-in-box {
