@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -48,16 +49,29 @@ public class Text {
     private UUID textID;
     private UUID scriptID;
     private String content;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    private String title;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public Text(@JsonProperty("scriptID") UUID scriptID,
-            @JsonProperty("content") String content, @JsonProperty("createdAt") Timestamp createdAt,
+    public Text(@JsonProperty("scriptID") UUID scriptID, @JsonProperty("textID") UUID textID,
+            @JsonProperty("content") String content, @JsonProperty("title") String title, @JsonProperty("createdAt") Timestamp createdAt,
             @JsonProperty("updatedAt") Timestamp updatedAt) {
         this.scriptID = scriptID;
         this.textID = UUID.randomUUID();
         this.content = content;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.title = title;
+        Date date = new Date();
+        Timestamp time = new Timestamp(date.getTime());
+        this.createdAt = time;
+        this.updatedAt = time;
     }
 }

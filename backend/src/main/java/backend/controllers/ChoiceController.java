@@ -29,13 +29,7 @@ public class ChoiceController {
 
     @GetMapping()
     public Dictionary getAllChoices(@RequestParam("limit") int limit, @RequestParam("offset") int offset) {
-       Dictionary result = choiceService.findAllChoices(limit, offset);
-       Object count = result.get("count");
-       if (offset >= (int) count ) {
-           throw new ApiRequestException("Offset should be less than total of Choices");
-       } else {
-           return result;
-       }
+           return choiceService.findAllChoices(limit, offset);
     }
 
     @GetMapping(path = "detail/{choiceId}")

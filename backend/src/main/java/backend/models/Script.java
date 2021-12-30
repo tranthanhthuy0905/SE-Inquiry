@@ -1,6 +1,7 @@
 package backend.models;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -65,7 +66,9 @@ public class Script {
         this.title = title;
         this.description = description;
         this.author = author;
-        this.publishedAt = publishedAt;
-        this.updatedAt = updatedAt;
+        Date date = new Date();
+        Timestamp time = new Timestamp(date.getTime());
+        this.publishedAt = time;
+        this.updatedAt = time;
     }
 }

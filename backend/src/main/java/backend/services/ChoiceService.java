@@ -1,13 +1,12 @@
 package backend.services;
 
 import backend.Pojos.ChoiceRequest;
+import backend.exceptions.ApiRequestException;
 import backend.models.Choice;
 import backend.repositories.ChoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.sql.Timestamp;
 import java.util.*;
 
 @Service
@@ -27,21 +26,24 @@ public class ChoiceService {
         List<Choice> data = choiceRepository.findAll(arrangement);
         int count = data.size();
 
-        data = data.subList(offset, data.size());
+        if (offset < count || (offset == 0 && count == 0)) {
+            data = data.subList(offset, count);
 
-        if (limit != -1) {
-            if (offset + limit <= data.size()) {
-                data = data.subList(0, limit);
-            } else {
-                data = data.subList(0, data.size());
+            if (limit != 0) {
+                if (offset + limit <= data.size()) {
+                    data = data.subList(0, limit);
+                } else {
+                    data = data.subList(0, data.size());
+                }
             }
+            result.put("count", count);
+            result.put("limit", limit);
+            result.put("offset", offset);
+            result.put("data", data);
+            return result;
+        } else {
+            throw new ApiRequestException("Offset should be less than total of Choices");
         }
-
-        result.put("count", count);
-        result.put("limit", limit);
-        result.put("offset", offset);
-        result.put("data", data);
-        return result;
     }
 
     public Choice createChoice(Choice choice) {

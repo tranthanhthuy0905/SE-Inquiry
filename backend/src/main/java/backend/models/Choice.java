@@ -1,7 +1,6 @@
 package backend.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
@@ -51,16 +50,27 @@ public class Choice {
     private UUID choiceID;
     @Nullable private UUID textID;
     private String content;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    private String title;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
     // constructor
     public Choice(@JsonProperty("textId") UUID textID, @JsonProperty("choiceId") UUID choiceID,
-                  @JsonProperty("content") String content, @JsonProperty("created_at") Timestamp createdAt,
+                  @JsonProperty("content") String content,@JsonProperty("title") String title,  @JsonProperty("created_at") Timestamp createdAt,
                   @JsonProperty("updated_at") Timestamp updatedAt) {
         this.choiceID = UUID.randomUUID();
         this.textID = textID;
         this.content = content;
+        this.title = title;
         Date date = new Date();
         Timestamp time = new Timestamp(date.getTime());
         this.createdAt = time;
