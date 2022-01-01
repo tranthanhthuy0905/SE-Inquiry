@@ -51,7 +51,7 @@ body {
 
 .story-list {
   position: absolute;
-  left: 120px;
+  left: 100px;
   top: 210px;
 }
 
@@ -59,8 +59,8 @@ body {
   position: relative;
   display: block;
   margin: 0 0 20px 0;
-  width: 1300px;
-  height: 138px;
+  width: 1350px;
+  height: 155px;
 
   background: #ffffff;
   border-style: solid;
@@ -70,9 +70,9 @@ body {
 
 .story-picture {
   left: 25px;
-  top: 17px;
-  width: 80px;
-  height: 74px;
+  top: 25px;
+  width: 100px;
+  height: 100px;
   position: absolute;
 
   background: #c4c4c4;
@@ -81,7 +81,7 @@ body {
 
 .story-title {
   position: absolute;
-  width: 230px;
+  width: 700px;
   height: 18px;
   left: 142px;
   top: 19px;
@@ -97,23 +97,13 @@ body {
 
 .story-info {
   position: absolute;
-  width: 1030px;
-  height: 83px;
+  width: 1060px;
+  height: 90px;
   left: 141px;
   top: 46px;
 }
 
-.book-open-box {
-  width: 17px;
-  height: 16px;
-  position: absolute;
-  left: 0px;
-  top: 1px;
-
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-
-.book-open-vector {
+.book-open {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -125,7 +115,7 @@ body {
   position: absolute;
   width: 149px;
   height: 19px;
-  left: 20px;
+  left: 25px;
   top: 0px;
 }
 
@@ -143,18 +133,12 @@ body {
   line-height: 22px;
 }
 
-.tag-box {
+.tag {
   width: 17px;
   height: 17px;
   position: absolute;
   left: 149px;
   top: 0px;
-}
-
-.tag-vector {
-  position: absolute;
-  width: 17px;
-  height: 17px;
 }
 
 .type-tag-box {
@@ -181,17 +165,17 @@ body {
   color: #999999;
 }
 
-.story-1-description {
+.story-description {
   position: absolute;
-  width: 1030px;
-  height: 59px;
+  width: 1060px;
+  height: 70px;
   left: 0px;
   top: 24px;
 }
 
 .desctiption {
   position: absolute;
-  width: 149px;
+  width: 150px;
   height: 20px;
   left: 1px;
   top: 0px;
@@ -204,46 +188,43 @@ body {
 
   color: #676767;
 }
+
 .description-detail {
   position: absolute;
-  width: 1030px;
-  height: 31px;
+  width: 1060px;
+  height: 40px;
   left: 0px;
   top: 28px;
 
   font-family: Nunito;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
 
   color: #999999;
 }
-.star-box {
+
+.star {
   position: absolute;
   width: 28px;
   height: 28px;
-  left: 1200px;
-  top: 23px;
+  right: 80px;
+  top: 20px;
 }
-.star-vector {
-  width: 22px;
-  height: 19px;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
+
 .rating {
   color: rgba(0, 0, 0, 1);
   width: 46px;
   height: 22px;
   position: absolute;
-  left: 1230px;
+  right: 30px;
   top: 18px;
 
-  font-family: Nunito;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 24px;
   line-height: 33px;
 
@@ -260,13 +241,15 @@ body {
   position: absolute;
   width: 82px;
   height: 28px;
-  left: 1200px;
+  right: 30px;
   top: 55px;
   background: #106bef;
 
   border: #106bef;
   border-radius: 20px;
+}
 
+.game-link {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
@@ -287,7 +270,7 @@ body {
   position: absolute;
   width: 82px;
   height: 28px;
-  left: 1200px;
+  right: 30px;
   top: 90px;
   background: #8cbae8;
 
