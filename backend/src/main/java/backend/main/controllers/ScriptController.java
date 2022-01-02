@@ -1,7 +1,9 @@
-package backend.controllers;
-import backend.Pojos.ScriptRequest;
-import backend.models.Script;
-import backend.services.ScriptService;
+package backend.main.controllers;
+import backend.main.Pojos.ScriptRequest;
+import backend.main.exceptions.ApiRequestException;
+import backend.main.models.Script;
+import backend.main.repositories.ScriptRepository;
+import backend.main.services.ScriptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,10 @@ import java.util.*;
 public class ScriptController {
 
     @Autowired
-    ScriptService scriptService;
+    private ScriptService scriptService;
+
+    @Autowired
+    private ScriptRepository scriptRepository;
 
     @PostMapping("create")
     public Script createScript(@RequestBody Script script) {
@@ -29,9 +34,14 @@ public class ScriptController {
         return scriptService.getScriptById(scriptID);
     }
 
-//    @PutMapping(path="update/{scriptId}")
-//    public Optional<Script> updateScript (@RequestBody ScriptRequest scriptRequest) {
-//        return scriptService.updateScript(scriptRequest);
-//    }
+    @PutMapping("update")
+    public Script updateScript (@RequestBody ScriptRequest scriptRequest) {
+        if (scriptRequest.scriptID == null) {
+            throw new ApiRequestException("scriptID is required to update the script");
+        }
+        return scriptService.updateScript(scriptRequest);
+
+    }
+
 }
 

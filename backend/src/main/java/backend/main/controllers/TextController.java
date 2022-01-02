@@ -1,8 +1,8 @@
-package backend.controllers;
+package backend.main.controllers;
 
-import backend.models.Text;
-import backend.repositories.TextRepository;
-import backend.services.TextService;
+import backend.main.models.Text;
+import backend.main.repositories.TextRepository;
+import backend.main.services.TextService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
@@ -11,10 +11,10 @@ import java.util.*;
 @RequestMapping("api/v1/text")
 public class TextController {
     @Autowired
-    TextRepository textRepository;
+    private TextRepository textRepository;
 
     @Autowired
-    TextService textService;
+    private TextService textService;
 
     @PostMapping("create")
     public Text createText(@RequestBody Text text) {

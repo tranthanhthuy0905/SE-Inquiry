@@ -1,15 +1,13 @@
-package backend.services;
+package backend.main.services;
 
-import backend.Pojos.ScriptRequest;
-import backend.exceptions.ApiRequestException;
-import backend.models.Choice;
-import backend.models.Script;
-import backend.repositories.ScriptRepository;
+import backend.main.Pojos.ScriptRequest;
+import backend.main.exceptions.ApiRequestException;
+import backend.main.models.Script;
+import backend.main.repositories.ScriptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -17,10 +15,8 @@ import java.util.*;
 public class ScriptService {
 
     @Autowired
-    ScriptRepository scriptRepository;
+    private ScriptRepository scriptRepository;
 
-    public ScriptService() {
-    }
 
     public Script createScript(Script script) {
         return scriptRepository.save(script);
@@ -56,9 +52,27 @@ public class ScriptService {
         return scriptRepository.findById(scriptID);
     }
 
-//    public Optional<Script> updateScript(ScriptRequest scriptRequest) {
-//        Date date = new Date();
-//        Timestamp time = new Timestamp(date.getTime());
-//        return scriptRepository.updateScript(scriptRequest, time);
-//    }
+    public Script updateScript(ScriptRequest scriptRequest) {
+        Date date = new Date();
+        Timestamp time = new Timestamp(date.getTime());
+        UUID scriptID = scriptRequest.scriptID;
+        String title = scriptRequest.title;
+        String description = scriptRequest.description;
+        String author = scriptRequest.author;
+        Script scriptUpdate = scriptRepository.findById(scriptID).get();
+        if (title != null) {
+            scriptUpdate.setTitle(title);
+        }
+        if (description != null) {
+            scriptUpdate.setDescription(description);
+        }
+        if (author != null) {
+            scriptUpdate.setAuthor(author);
+        }
+        Date update = new Date();
+        Timestamp updated_at = new Timestamp(date.getTime());
+        scriptUpdate.setUpdatedAt(updated_at);
+        return scriptRepository.save(scriptUpdate);
+    }
+
 }
