@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import '../Menu/menu.css';
 import NavBar from '../../components/navbar/NavBar';
+import { categories } from '../../data/Menu/categories';
+import { stories } from '../../data/story-test';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import BookOpen from '../../assets/book-open.png';
+import Tag from '../../assets/tag.png';
+import Star from '../../assets/star.png';
 
 const Menu = () => {
-
-    const listCategory = async () => {
+    const listCategory = () => {
         return (
-           0
+            0
         );
+    }
+
+    const readStory = () => {
+        return alert("Read THIS!!!")
+    }
+
+    const addToList = () => {
+        return alert("Story added to list.")
     }
 
     return (
@@ -15,51 +28,49 @@ const Menu = () => {
         <div className='Menu'>
             <NavBar/>
             <div class="category-background">
-                <div class="category">
-                    <button type ='button' class="popular" onClick={listCategory}>Popular</button>
-                    <button type ='button' class="detective" onClick={listCategory}>Detective</button>
-                    <button type ='button' class="romance" onClick={listCategory}>Romance</button>
-                    <button type ='button' class="history" onClick={listCategory}>History</button>
-                    <button type ='button' class="fantasy" onClick={listCategory}>Fantasy</button>
-                    <button type ='button' class="sci-fic" onClick={listCategory}>Science fiction</button>
-                    <button type ='button' class="more" onClick={listCategory}>More</button>
-                </div>
+                <ul className="category">
+                    {categories.map((category) => {
+                        const { cat } = category;
+                        return (
+                            <button type ='button' class={cat} onClick={listCategory}>{cat}</button>
+                        );
+                    })}
+                </ul>
             </div>
+            
+            <ul className = "story-list">
+                {stories.map((story) => {
+                    const { title, picture, link, view, tag, description, rating } = story;
+                    return (
+                            <li className={title}>
+                                <img className="story-picture" src = {picture} />
+                                <h3 className="story-title">{title}</h3>
+                                <div className="story-info">
+                                    <img className ='book-open' src={BookOpen}/>
+                                    <div className="view-count-box">
+                                        <span  className="view-count">{view} viewed</span>
+                                    </div>
+                                    <img className='tag' src={Tag}/>
+                                    <div className="type-tag-box">
+                                        <span  className="type-tag">{tag}</span>
+                                    </div>
+                                    <div className="story-description">
+                                        <span  className="desctiption">Description</span>
+                                        <span  className="description-detail">{description}</span>
+                                    </div>
+                                </div>
+                                
+                                <img className='star' src={Star} />
 
-            <div class="story">
-                <image class="story-picture" src =""></image>
-                <h3 class="story-title">Sample Story 1</h3>
-                <div class="story-info">
-                    <div class="book-open-box">
-                        <img class="book-open-vector" src="../../assets/book-open.png" alt=""></img>
-                    </div>
-                    <div class="view-count-box">
-                        <span  class="view-count">10 viewed</span>
-                    </div>
-                    <div class="tag-box">
-                        <img class="tag-vector" src="../../assets/tag.png" alt=""></img>
-                    </div>
-                    <div class="type-tag-box">
-                        <span  class="type-tag">Romance, Fantasy</span>
-                    </div>
-                    <div class="story-1-description">
-                        <span  class="desctiption">Description</span>
-                        <span  class="description-detail">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu....</span>
-                    </div>
-                </div>
-                <div class="star-box">
-                    <img class="star-vector" src="../../assets/star.png" alt=""></img>
-                </div>
-
-                <div  class="rating">4.8</div>
-                
-                <a class="read-button" href="">
-                    <span  class="read">Read</span>
-                </a>
-                <a class="add-button" href="">
-                    <span  class="add">Add to List</span>
-                </a>
-            </div>
+                                <div  className="rating">{rating}</div>   
+                                <button className="read-button" >
+                                    <a className="game-link" href={link}>Read</a>
+                                </button>
+                                <button className="add-to-list" onClick={addToList}>Add to List</button>
+                            </li>
+                        );
+                    })}
+            </ul>
         </div>
     );
   }
