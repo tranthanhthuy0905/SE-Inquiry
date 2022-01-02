@@ -7,14 +7,14 @@ import './navbar.css';
 import avatar from '../../assets/avatar.png';
 
 const NavBar = () => {
-    const [result, setResult] = useState('');
-    const [totalNotification, setTotalNotification] = useState(0);
-    const [showLinks, setShowLinks] = useState(false);
-    const linksContainerRef = useRef(null);
-    const linksRef = useRef(null);
-    const toggleLinks = () => {
-      setShowLinks(!showLinks);
-    };
+  const [result, setResult] = useState('');
+  const [totalNotification, setTotalNotification] = useState(0);
+  const [showLinks, setShowLinks] = useState(false);
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
+  const toggleLinks = () => {
+    setShowLinks(!showLinks);
+  };
 
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
