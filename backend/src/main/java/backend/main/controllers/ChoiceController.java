@@ -1,26 +1,24 @@
-package backend.controllers;
+package backend.main.controllers;
 
-import backend.Pojos.ChoiceRequest;
-import backend.exceptions.ApiRequestException;
-import backend.models.Choice;
-import backend.repositories.ChoiceRepository;
-import backend.services.ChoiceService;
+import backend.main.Pojos.ChoiceRequest;
+import backend.main.models.Choice;
+import backend.main.repositories.ChoiceRepository;
+import backend.main.services.ChoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 @RequestMapping("api/v1/choice")
 public class ChoiceController {
 
     @Autowired
-    ChoiceRepository choiceRepository;
+    private ChoiceRepository choiceRepository;
 
     @Autowired
-    ChoiceService choiceService;
+    private ChoiceService choiceService;
 
     @PostMapping("create")
     public Choice createChoice(@RequestBody Choice choice) {

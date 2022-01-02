@@ -1,8 +1,8 @@
-package backend.services;
+package backend.main.services;
 
-import backend.exceptions.ApiRequestException;
-import backend.models.Text;
-import backend.repositories.TextRepository;
+import backend.main.exceptions.ApiRequestException;
+import backend.main.models.Text;
+import backend.main.repositories.TextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.*;
 public class TextService {
 
     @Autowired
-    TextRepository textRepository;
+    private TextRepository textRepository;
 
     public TextService () {
 

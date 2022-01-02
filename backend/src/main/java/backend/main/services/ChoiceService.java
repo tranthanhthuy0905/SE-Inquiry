@@ -1,9 +1,9 @@
-package backend.services;
+package backend.main.services;
 
-import backend.Pojos.ChoiceRequest;
-import backend.exceptions.ApiRequestException;
-import backend.models.Choice;
-import backend.repositories.ChoiceRepository;
+import backend.main.Pojos.ChoiceRequest;
+import backend.main.exceptions.ApiRequestException;
+import backend.main.models.Choice;
+import backend.main.repositories.ChoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.*;
 public class ChoiceService {
 
     @Autowired
-    ChoiceRepository choiceRepository;
+    private ChoiceRepository choiceRepository;
 
     public ChoiceService () {
 

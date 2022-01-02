@@ -1,4 +1,4 @@
-package backend.exceptions;
+package backend.main.exceptions;
 
 public class ApiRequestException extends RuntimeException {
     public ApiRequestException(String message) {

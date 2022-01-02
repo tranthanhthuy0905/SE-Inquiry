@@ -1,10 +1,9 @@
-package backend.repositories;
+package backend.main.repositories;
 
 import java.sql.Timestamp;
 import java.util.*;
 
-import backend.models.Choice;
-import backend.models.Text;
+import backend.main.models.Text;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
