@@ -104,7 +104,7 @@ const showEditor = () => {
     })
 }
 
-const LeftMenu = () => {
+const LeftMenu = (props) => {
     return (
         <div className='create-page'>
                 <div className='left-menu'>

@@ -61,6 +61,7 @@
   display: block;
   outline: 0;
 }
+
 .editor-wrapper {
   position: absolute;
   float: right;
@@ -73,13 +74,7 @@
 }
 
 .editor-class {
-  position: absolute;
-  float: right;
-  top: 360px;
-  right: 0px;
-  width: 240px;
-  height: 30px;
-  background: var(--clr-white);
+  display: none;
 }
 
 .toolbar-class {
