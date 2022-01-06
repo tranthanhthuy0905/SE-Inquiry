@@ -2,9 +2,61 @@ import React from 'react'
 import { useState } from 'react'
 import './LeftMenu.css';
 import { chapters } from '../../data/ChapterList/ChapterList';
+// import { Page } from '../Page/Page';
+// import { ChapterModList } from '../../data/ChapterList/ChapterModList';
+import { choices } from '../../data/ChoiceList';
+
+var displayedPage = '';
+
+const ChapterModList = [
+    {pageName: 'test',
+    pageLink: '/',
+    descLabel: '',
+    descInput: '',
+    choiceLabel: '',
+    choice1: 'Choice 1',
+    choice1Link: '',
+    choice2: 'Choice 2',
+    choice2Link: '',
+    choice3: 'Choice 3',
+    choice3Link: '',
+    choice4: 'Choice 4',
+    choice4Link: '',
+  }];
+
+const Page = {
+    pageName: '',
+    pageLink: '/',
+    descLabel: '',
+    descInput: '',
+    choiceLabel: '',
+    choice1: 'Choice 1',
+    choice1Link: '',
+    choice2: 'Choice 2',
+    choice2Link: '',
+    choice3: 'Choice 3',
+    choice3Link: '',
+    choice4: 'Choice 4',
+    choice4Link: '',
+  }
 
 const addNewPage = () => {
-    return alert("New Page created");
+    let pageName;
+    while (pageName == null || pageName == '') {
+        pageName = prompt('Please enter the name of this page', '')
+    }
+    let newPage = Object.create(Page);
+    newPage.pageName = pageName;
+    newPage.pageLink+= pageName;
+    newPage.descLabel= 'Page Description';
+    newPage.descInput= 'The description for this page';
+    newPage.choiceLabel= 'Choices';
+    newPage.choice1Link+=newPage.pageLink;
+    newPage.choice2Link+=newPage.pageLink;
+    newPage.choice3Link+=newPage.pageLink;
+    newPage.choice4Link+=newPage.pageLink;
+    ChapterModList.push(newPage);
+    console.log(ChapterModList);
 }
 
 const addTextSection = () => {
@@ -20,11 +72,35 @@ const addStats = () => {
 }
 
 const addVar = () => {
-    return alert("New Page created");
+    return alert("New Variable created");
 }
 
 const addButton = () => {
-    return alert("New Page created");
+    return alert("New Button created");
+}
+
+const showPages = () => {
+    let ChapterList = document.getElementsByClassName("chapter-list");
+    console.log("Display clicked")
+    Array.from(ChapterList).forEach((ChapterList) => {
+        if (ChapterList.style.display == "none") {
+            ChapterList.style.display = "block";
+        } else {
+            ChapterList.style.display = "none";
+        }
+    })
+}
+
+const showEditor = (pageName) => {
+    var visibleEditor = document.getElementsByClassName("editor-canvas");
+    Array.from(visibleEditor).forEach((Editor) => {
+        if (Editor.style.display == "none") {
+            displayedPage = pageName;
+            Editor.style.display = "block";
+        } else {
+            Editor.style.display = "none";
+        }
+    })
 }
 
 const LeftMenu = () => {
@@ -41,19 +117,27 @@ const LeftMenu = () => {
 
             <ul className='add-page-box'>
                 <h3 className="page-in-box">Page</h3>
-                <button className='page-plus' onClick={addNewPage}>+</button>
+                <button className='page-plus' onClick={showPages}>+</button>
             </ul>
             
             <ul className='chapter-list'>
-                {chapters.map((chapter) => {
-                        const { name, info } = chapter;
+            {ChapterModList.map((page) => {
+                        const { pageName } = page;
                         return (
-                            <a className={name} href={ info }>{name}</a>
+                            <a className={pageName} onClick={showEditor('')}>{pageName}</a>
                         );
                     })}
+            {/* {chapters.map((chapter) => { 
+                        const { name, info } = chapter;
+                        return (
+                            <a className={name} href={info}>{name}</a>
+                        );
+                    })}
+                */}
             </ul>
         </div>
+        
     )
 }
 
-export default LeftMenu;
+export {LeftMenu, displayedPage};

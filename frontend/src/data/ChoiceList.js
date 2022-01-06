@@ -15,7 +15,7 @@ export const choices = [
     },
 
     {
-        id: 'forth-choice',
-        placeholder: 'This is the forth choice'
+        id: 'fourth-choice',
+        placeholder: 'This is the fourth choice'
     },
 ]

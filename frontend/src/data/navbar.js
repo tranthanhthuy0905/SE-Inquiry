@@ -2,7 +2,7 @@
 export const links = [
     {
         id: 1,
-        url: '/main-menu',
+        url: '/',
         text: 'Home',
     },
     {

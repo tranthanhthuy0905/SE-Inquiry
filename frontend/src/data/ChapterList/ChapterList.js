@@ -1,4 +1,5 @@
 export const chapters = [
+    
     {   
         id: 'Chapter 1',
         name: 'Chapter 1',
@@ -24,6 +25,7 @@ export const chapters = [
     {   
         id: 'Chapter 2B',
         name: 'Chapter 2B',
+        chapterDescription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
         info: '',
         choice_1: '',
         choice_2: '',

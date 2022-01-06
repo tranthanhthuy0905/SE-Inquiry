@@ -40,6 +40,11 @@
   --fixed-width: 620px;
 }
 
+.create-page {
+  height: 731px;
+  background-color: var(--clr-grey-10);
+}
+
 .editor-canvas {
   top: 73px;
   left: 240px;
@@ -48,9 +53,12 @@
 
   width: (max-content - 480px);
   height: 698px;
+  max-height: max-content;
   position: absolute;
 
   background: var(--clr-grey-10);
+
+  display: none;
 }
 
 .page-desc-box {
@@ -95,6 +103,8 @@
   margin: 10px 0px;
 
   outline: none;
+  background: var(--clr-grey-10);
+  border: none;
 }
 
 .desc-input {
@@ -198,7 +208,10 @@
   align-self: stretch;
   flex-grow: 0;
   margin: 10px 0px;
+
   outline: none;
+  background: var(--clr-grey-10);
+  border: none;
 }
 
 .choice-helper {

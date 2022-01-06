@@ -1,5 +1,5 @@
 import React from 'react';
-import '../IndvPage/index.css';
+import '../IndvPage/IndvPage.css';
 import NavBar from '../../components/navbar/NavBar';
 import TestStory1 from '../../data/TestStory1'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
