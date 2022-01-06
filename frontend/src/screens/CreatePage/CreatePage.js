@@ -39,24 +39,24 @@ const CreatePage = () => {
             <LeftMenu/>
             <SideBar/>
             
-            {/* <div className ="editor-canvas">
+            <div className ="editor-canvas">
                 <box className="page-desc-box">
-                    <input className="desc-label" contentEditable="true" value={ChapterModList[displayedPage].pageLabel} onChange={ChapterModList[displayedPage].handleChange} />
-                    <textarea className="desc-input" value={ChapterModList[displayedPage].descInput} onChange={ChapterModList[displayedPage].handleChange} /> 
+                    <input className="desc-label" contentEditable="true" /*value={ChapterModList[displayedPage].pageLabel} onChange={ChapterModList[displayedPage].handleChange}*/ />
+                    <textarea className="desc-input" /*value={ChapterModList[displayedPage].descInput} onChange={ChapterModList[displayedPage].handleChange}*/ /> 
                     <h5 className="desc-helper">Writer notes</h5>
                 </box>
 
                 <box className="choice-box">
-                    <input className="choice-label" contentEditable="true" value={ChapterModList[displayedPage].choiceLabel} onChange={ChapterModList[displayedPage].handleChange}/>
+                    <input className="choice-label" contentEditable="true" /*value={ChapterModList[displayedPage].choiceLabel} onChange={ChapterModList[displayedPage].handleChange}*//>
                     <ul className='choice-list'>
-                            <input className='choice1' contentEditable="true" value={ChapterModList[displayedPage].choice1.value} onChange={ChapterModList[displayedPage].handleChange} />
-                            <input className='choice2' contentEditable="true" value={ChapterModList[displayedPage].choice2.value} onChange={ChapterModList[displayedPage].handleChange} />
-                            <input className='choice3' contentEditable="true" value={ChapterModList[displayedPage].choice3.value} onChange={ChapterModList[displayedPage].handleChange} />  
-                            <input className='choice4' contentEditable="true" value={ChapterModList[displayedPage].choice4.value} onChange={ChapterModList[displayedPage].handleChange} />  
+                            <input className='choice1' contentEditable="true" /*value={ChapterModList[displayedPage].choice1.value} onChange={ChapterModList[displayedPage].handleChange}*/ />
+                            <input className='choice2' contentEditable="true" /*value={ChapterModList[displayedPage].choice2.value} onChange={ChapterModList[displayedPage].handleChange}*/ />
+                            <input className='choice3' contentEditable="true" /*value={ChapterModList[displayedPage].choice3.value} onChange={ChapterModList[displayedPage].handleChange}*/ />  
+                            <input className='choice4' contentEditable="true" /*value={ChapterModList[displayedPage].choice4.value} onChange={ChapterModList[displayedPage].handleChange}*/ />  
                     </ul>
                     <h5 className="choice-helper">Writer notes</h5>
                 </box>
-            </div> */}
+            </div>
         </body>
     )
 

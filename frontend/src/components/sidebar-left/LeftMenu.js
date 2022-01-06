@@ -91,11 +91,12 @@ const showPages = () => {
     })
 }
 
-const showEditor = (pageName) => {
-    var visibleEditor = document.getElementsByClassName("editor-canvas");
+const showEditor = () => {
+    let visibleEditor = document.getElementsByClassName("editor-canvas");
+    console.log("Editor showed")
     Array.from(visibleEditor).forEach((Editor) => {
-        if (Editor.style.display == "none") {
-            displayedPage = pageName;
+        if (Editor.style.display === "none") {
+            
             Editor.style.display = "block";
         } else {
             Editor.style.display = "none";
@@ -105,37 +106,53 @@ const showEditor = (pageName) => {
 
 const LeftMenu = () => {
     return (
-        <div className='left-menu'>
-            <ul className='button-list'>
-                <button className='add-page' onClick={addNewPage}>Page +</button>
-                <button className='add-text' onClick={addTextSection}>Text +</button>
-                <button className='add-choice' onClick={addChoice}>Choice +</button>
-                <button className='add-stats' onClick={addStats}>Stats +</button>
-                <button className='add-variable' onClick={addVar}>Variable +</button>
-                <button className='new-button' onClick={addButton}>Button +</button>
-            </ul>
+        <div className='create-page'>
+                <div className='left-menu'>
+                <ul className='button-list'>
+                    <button className='add-page' onClick={addNewPage}>Page +</button>
+                    <button className='add-text' onClick={addTextSection}>Text +</button>
+                    <button className='add-choice' onClick={addChoice}>Choice +</button>
+                    <button className='add-stats' onClick={addStats}>Stats +</button>
+                    <button className='add-variable' onClick={addVar}>Variable +</button>
+                    <button className='new-button' onClick={addButton}>Button +</button>
+                </ul>
 
-            <ul className='add-page-box'>
-                <h3 className="page-in-box">Page</h3>
-                <button className='page-plus' onClick={showPages}>+</button>
-            </ul>
-            
-            <ul className='chapter-list'>
-            {ChapterModList.map((page) => {
-                        const { pageName } = page;
-                        return (
-                            <a className={pageName} onClick={showEditor('')}>{pageName}</a>
-                        );
-                    })}
-            {/* {chapters.map((chapter) => { 
-                        const { name, info } = chapter;
-                        return (
-                            <a className={name} href={info}>{name}</a>
-                        );
-                    })}
-                */}
-            </ul>
+                <ul className='add-page-box'>
+                    <h3 className="page-in-box">Page</h3>
+                    <button className='page-plus' onClick={showPages}>+</button>
+                </ul>
+                
+                <ul className='chapter-list'>
+                {ChapterModList.map((page) => {
+                            const { pageName } = page;
+                            return (
+                                <a className={pageName} onClick={showEditor}>{pageName}</a>
+                            );
+                        })}
+                </ul>
+            </div>
+
+            <div className ="editor-canvas">
+                <box className="page-desc-box">
+                    <input className="desc-label" contentEditable="true" /*value={ChapterModList[displayedPage].pageLabel} onChange={ChapterModList[displayedPage].handleChange}*/ />
+                    <textarea className="desc-input" /*value={ChapterModList[displayedPage].descInput} onChange={ChapterModList[displayedPage].handleChange}*/ /> 
+                    <h5 className="desc-helper">Writer notes</h5>
+                </box>
+
+                <box className="choice-box">
+                    <input className="choice-label" contentEditable="true" /*value={ChapterModList[displayedPage].choiceLabel} onChange={ChapterModList[displayedPage].handleChange}*//>
+                    <ul className='choice-list'>
+                            <input className='choice1' contentEditable="true" /*value={ChapterModList[displayedPage].choice1.value} onChange={ChapterModList[displayedPage].handleChange}*/ />
+                            <input className='choice2' contentEditable="true" /*value={ChapterModList[displayedPage].choice2.value} onChange={ChapterModList[displayedPage].handleChange}*/ />
+                            <input className='choice3' contentEditable="true" /*value={ChapterModList[displayedPage].choice3.value} onChange={ChapterModList[displayedPage].handleChange}*/ />  
+                            <input className='choice4' contentEditable="true" /*value={ChapterModList[displayedPage].choice4.value} onChange={ChapterModList[displayedPage].handleChange}*/ />  
+                    </ul>
+                    <h5 className="choice-helper">Writer notes</h5>
+                </box>
+            </div>
         </div>
+        
+        
         
     )
 }
