@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./CreatePage.css";
 import NavBarCreate from "../../components/navbar/NavBarCreate";
-import {LeftMenu, displayedPage} from "../../components/sidebar-left/LeftMenu";
+import LeftMenu from "../../components/sidebar-left/LeftMenu";
 import SideBar from '../../components/sidebar-right/SideBar';
 import { Page } from "../../components/Page/Page";
 import Menu from "../../components/sidebar-right/SideBar";
 import { chapters } from "../../data/ChapterList/ChapterList";
 import { choices } from "../../data/ChoiceList";
 import { set } from "draft-js/lib/DefaultDraftBlockRenderMap";
-import { ChapterModList } from "../../data/ChapterList/ChapterModList";
 
 
 const CreatePage = () => {
