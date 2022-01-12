@@ -1,14 +1,14 @@
 package backend.main.models;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -24,9 +24,12 @@ public class Script {
     private String author;
     private Timestamp publishedAt;
     private Timestamp updatedAt;
-    
-    public Script(@JsonProperty("title") String title, @JsonProperty("publishedAt") Timestamp publishedAt,
-    @JsonProperty("description") String description, @JsonProperty("author") String author, @JsonProperty("updatedAt") Timestamp updatedAt) {
+
+    @OneToMany(mappedBy = "script")
+    private Set<Text> texts;
+
+    public Script(@JsonProperty("title") String title,
+    @JsonProperty("description") String description, @JsonProperty("author") String author) {
         this.scriptID = UUID.randomUUID();
         this.title = title;
         this.description = description;

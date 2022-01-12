@@ -2,14 +2,18 @@ package backend.main.services;
 
 import backend.main.Pojos.ScriptRequest;
 import backend.main.exceptions.ApiRequestException;
+import backend.main.models.Choice;
 import backend.main.models.Script;
+import backend.main.models.Text;
 import backend.main.repositories.ScriptRepository;
+import backend.main.repositories.TextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class ScriptService {
@@ -17,9 +21,11 @@ public class ScriptService {
     @Autowired
     private ScriptRepository scriptRepository;
 
+    @Autowired
+    private TextRepository textRepository;
 
     public Script createScript(Script script) {
-        return scriptRepository.save(script);
+        return scriptRepository.createScript(script).get();
     }
 
     public Dictionary getAllScripts(int limit, int offset) {
@@ -52,27 +58,34 @@ public class ScriptService {
         return scriptRepository.findById(scriptID);
     }
 
-    public Script updateScript(ScriptRequest scriptRequest) {
-        Date date = new Date();
-        Timestamp time = new Timestamp(date.getTime());
-        UUID scriptID = scriptRequest.scriptID;
-        String title = scriptRequest.title;
-        String description = scriptRequest.description;
-        String author = scriptRequest.author;
-        Script scriptUpdate = scriptRepository.findById(scriptID).get();
-        if (title != null) {
-            scriptUpdate.setTitle(title);
-        }
-        if (description != null) {
-            scriptUpdate.setDescription(description);
-        }
-        if (author != null) {
-            scriptUpdate.setAuthor(author);
-        }
-        Date update = new Date();
-        Timestamp updated_at = new Timestamp(date.getTime());
-        scriptUpdate.setUpdatedAt(updated_at);
-        return scriptRepository.save(scriptUpdate);
+//    public Script updateScript(ScriptRequest scriptRequest) {
+//        UUID scriptID = scriptRequest.scriptID;
+//        String title = scriptRequest.title;
+//        String description = scriptRequest.description;
+//        String author = scriptRequest.author;
+//        Script scriptUpdate = scriptRepository.findById(scriptID).get();
+//        if (title != null) {
+//            scriptUpdate.setTitle(title);
+//        }
+//        if (description != null) {
+//            scriptUpdate.setDescription(description);
+//        }
+//        if (author != null) {
+//            scriptUpdate.setAuthor(author);
+//        }
+//        Date update = new Date();
+//        Timestamp updated_at = new Timestamp(update.getTime());
+//        scriptUpdate.setUpdatedAt(updated_at);
+//        return scriptRepository.save(scriptUpdate);
+//    }
+
+    public Script MatchTextToScript(UUID textID, UUID scriptID) {
+        Text text = textRepository.findByTextID(textID).get();
+        Script script = scriptRepository.findById(scriptID).get();
+        Set<Text> texts = script.getTexts();
+        texts.add(text);
+        script.setTexts(texts);
+        return scriptRepository.save(script);
     }
 
 }
