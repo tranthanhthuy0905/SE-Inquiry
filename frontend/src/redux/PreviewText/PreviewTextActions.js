@@ -2,15 +2,15 @@ import {FETCH_TEXT_REQUEST, FETCH_TEXT_SUCCESS, FETCH_TEXT_ERROR, FETCH_TEXT_FIN
 import axios from 'axios';
 
 export const fetchText = (textUri) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(fetchTextRequest())
-        axios
+        await axios
             .get(textUri)
             .then(response => {
                 console.log('respo', response); 
                 const text = response.data;
                 const choices = text.choices;
-                if (choices === []) {
+                if (choices.length == 0) {
                     dispatch(fetchTextFinal(text));
                 } else {
                     dispatch(fetchTextSuccess(text));

@@ -23,6 +23,7 @@ const textReducer = (state = initialState, action) => {
             }
         case FETCH_TEXT_SUCCESS:
             return {
+                ...state,
                 loading: false,
                 finish: false,
                 text: action.payload,
@@ -30,6 +31,7 @@ const textReducer = (state = initialState, action) => {
             }
         case FETCH_TEXT_FINAL:
             return {
+                ...state,
                 loading: false,
                 finish: true,
                 text: action.payload,
@@ -37,6 +39,7 @@ const textReducer = (state = initialState, action) => {
             }
         case FETCH_TEXT_ERROR:
             return {
+                ...state,
                 loading: false,
                 finish: false,
                 text: {},

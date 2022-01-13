@@ -13,30 +13,25 @@ import { bindActionCreators } from 'redux';
 const PreviewPage = ({loading, finish, text, error, fetchText}) => {
    
     let navigate = useNavigate();
-
     const onBackHome = () => {
         navigate('/');
     }
-
     let scriptID = '67ddf0be-50ab-44fd-85fa-b0d5284bd52a';
-    let Uri = 'api/v1/text/';
-
+    let Uri = 'http://localhost:8080/api/v1/text/detail/';
     useEffect(() => {
         const textUri = Uri + scriptID;
         fetchText(textUri);
     }, []);
-
     console.log('text', text);
-
     return loading ? (
             <h2>Loading ...</h2>
         ) : error ? (
-            <h2>{error}</h2>
+            <h3>{error}</h3>
         ) : (
             <body className="preview-page">
                 <NavBar/>
-                {/* <LeftMenu/>
-                <SideBar/> */}
+                <LeftMenu hidden/>
+                <SideBar/>
                 <div className="preview-container">
                     <section className="preview-header">
                         <div className="chapter-title">{text && text.title}</div>
@@ -46,7 +41,7 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
                         <text className='text-container'>
                             {text && text.content}
                         </text>
-                        {text && text.choices !== [] ? 
+                        {text && text.choices.length !== 0 ? 
                             (
                                 <div className="choice-container">
                                 <text className='make-choice'>Make your first choice:</text>
