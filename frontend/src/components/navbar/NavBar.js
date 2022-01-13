@@ -94,7 +94,7 @@ const NavBar = () => {
             {/* Avatar */}
             <img src={avatar} className='avatar' alt='avatar' onClick={showSetting}/>
 
-            <ul className='setting-list'>
+            <ul className='setting-list' style={{display: 'none'}}>
               <button className='view-profile'>View Profile</button>
               <button className='view-setting'>Setting</button>
               <button className='view-account'>Account</button>

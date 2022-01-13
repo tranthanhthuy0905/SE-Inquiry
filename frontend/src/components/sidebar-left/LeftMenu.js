@@ -60,7 +60,7 @@ const LeftMenu = (props) => {
         newPage.choice4Link+=newPage.pageLink;
         ChapterModList.push(newPage);
         console.log(ChapterModList);
-        setChapterModList( ChapterModList => [...ChapterModList]);
+        setChapterModList(ChapterModList => [...ChapterModList]);
     }
 
     const addTextSection = () => {
