@@ -1,21 +1,21 @@
 export const choices = [
     {
-        id: 'first choice',
-        placeholder: 'This is the first choice'
+        choiceID: 'first choice',
+        content: 'This is the first choice'
     },
 
     {
-        id: 'second-choice',
-        placeholder: 'This is the second choice'
+        choiceID: 'second-choice',
+        content: 'This is the second choice'
     },
 
     {
-        id: 'third-choice',
-        placeholder: 'This is the third choice'
+        choiceID: 'third-choice',
+        content: 'This is the third choice'
     },
 
     {
-        id: 'fourth-choice',
-        placeholder: 'This is the fourth choice'
+        choiceID: 'fourth-choice',
+        content: 'This is the fourth choice'
     },
 ]

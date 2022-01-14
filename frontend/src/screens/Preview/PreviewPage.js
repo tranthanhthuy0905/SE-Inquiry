@@ -9,6 +9,7 @@ import { Button } from 'antd';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import "./PreviewPage.css";
 
 const PreviewPage = ({loading, finish, text, error, fetchText}) => {
    
