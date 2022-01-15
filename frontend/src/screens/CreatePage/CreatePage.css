@@ -45,6 +45,7 @@
   background-color: var(--clr-grey-10);
 }
 
+
 .editor-canvas {
   top: 73px;
   left: 240px;
@@ -52,13 +53,11 @@
   bottom: 0px;
 
   width: (max-content - 480px);
-  height: 698px;
-  max-height: max-content;
+  height: 658px;
+
   position: absolute;
 
   background: var(--clr-grey-10);
-
-  display:none;
 }
 
 .page-desc-box {

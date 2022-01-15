@@ -250,20 +250,6 @@ body {
   text-decoration: none;
 }
 
-.editor-canvas {
-  top: 73px;
-  left: 240px;
-  right: 240px;
-  bottom: 0px;
-
-  width: (max-content - 480px);
-  height: 658px;
-
-  position: absolute;
-
-  background: var(--clr-grey-10);
-}
-
 .page-desc-box {
   display: flex;
   flex-direction: column;

@@ -23,7 +23,7 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
         const textUri = Uri + scriptID;
         fetchText(textUri);
     }, []);
-    console.log('text', text);
+    
     return loading ? (
             <h2>Loading ...</h2>
         ) : error ? (
@@ -63,8 +63,7 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
-    return state;
+    return state.text;
   }
 
 const mapDispatchToProps = dispatch => {
