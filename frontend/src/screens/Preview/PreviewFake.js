@@ -66,7 +66,7 @@ const PreviewPageFake = ({loading, finish, text, error, fetchText}) => {
                             ) : (<div></div>)
                         } */}
                         <div className="choice-container">
-                            <text className='make-choice'>Make your first choice:</text>
+                            <text className='make-choice'>Make your choice:</text>
                             {choices.map((choice) => {
                                 const {choiceID, content} = choice;
                                 return (<Button >{content}</Button>);

@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BookOpen from '../../assets/book-open.png';
 import Tag from '../../assets/tag.png';
 import Star from '../../assets/star.png';
+import {Helmet} from "react-helmet";
 
 const Menu = () => {
     const listCategory = () => {
@@ -26,6 +27,11 @@ const Menu = () => {
     return (
 
         <div className='Menu'>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Inquiry</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            </Helmet>
             <NavBar/>
             <div class="category-background">
                 <ul className="category">

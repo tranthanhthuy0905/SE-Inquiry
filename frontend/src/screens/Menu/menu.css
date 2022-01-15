@@ -10,11 +10,11 @@ body {
   position: absolute;
   width: 811px;
   height: 73px;
-  left: 380px;
+  left: 345px;
   top: 102px;
 
   background: var(--clr-grey-10);
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .category {
@@ -51,7 +51,7 @@ body {
 
 .story-list {
   position: absolute;
-  left: 100px;
+  left: 70px;
   top: 210px;
 }
 
@@ -59,8 +59,8 @@ body {
   position: relative;
   display: block;
   margin: 0 0 20px 0;
-  width: 1350px;
-  height: 155px;
+  width: 1300px;
+  height: 185px;
 
   background: #ffffff;
   border-style: solid;
@@ -71,8 +71,8 @@ body {
 .story-picture {
   left: 25px;
   top: 25px;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 135px;
   position: absolute;
 
   background: #c4c4c4;
@@ -82,14 +82,14 @@ body {
 .story-title {
   position: absolute;
   width: 700px;
-  height: 18px;
-  left: 142px;
+  height: 25px;
+  left: 160px;
   top: 19px;
 
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 23px;
+  font-size: 27px;
+  line-height: 27px;
 
   color: #000000;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -100,8 +100,8 @@ body {
   position: absolute;
   width: 1060px;
   height: 90px;
-  left: 141px;
-  top: 46px;
+  left: 160px;
+  top: 60px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -175,21 +175,21 @@ body {
   width: 1060px;
   height: 70px;
   left: 0px;
-  top: 24px;
+  top: 35px;
 }
 
 .desctiption {
   position: absolute;
   width: 150px;
   height: 20px;
-  left: 1px;
-  top: 0px;
+  left: 0px;
+  top: 5px;
 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 22px;
 
   color: #676767;
@@ -197,17 +197,17 @@ body {
 
 .description-detail {
   position: absolute;
-  width: 1060px;
-  height: 40px;
-  left: 0px;
+  width: 1000px;
+  height: 60px;
+  left: 5px;
   top: 28px;
 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 16px;
+  line-height: 20px;
 
   color: #999999;
 }

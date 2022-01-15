@@ -25,14 +25,35 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
     }, []);
     
     return loading ? (
-            <h2>Loading ...</h2>
+    <div className='loading-screen'>
+            <h3>Loading</h3>
+    </div>
         ) : error ? (
-            <h3>{error}</h3>
+            <div class="error-page">
+                <h2>{error}<b> :(</b></h2>
+                <div class="gears">
+                    <div class="gear one">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    </div>
+                    <div class="gear two">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    </div>
+                    <div class="gear three">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    </div>
+                </div>
+                <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+                <script src="js/main.js" type="text/javascript"></script>
+            </div>
         ) : (
             <body className="preview-page">
                 <NavBar/>
-                <LeftMenu hidden/>
-                <SideBar/>
                 <div className="preview-container">
                     <section className="preview-header">
                         <div className="chapter-title">{text && text.title}</div>

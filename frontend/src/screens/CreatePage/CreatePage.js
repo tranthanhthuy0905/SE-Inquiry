@@ -5,6 +5,7 @@ import LeftMenu from "../../components/sidebar-left/LeftMenu";
 import SideBar from '../../components/sidebar-right/SideBar';
 import { useSelector, useDispatch } from "react-redux";
 import { doneSelectPage, doneAddChoice } from "../../redux";
+import {Helmet} from "react-helmet";
 
 const CreatePage = () => {
 
@@ -96,6 +97,11 @@ const CreatePage = () => {
     }
     return (
         <body className="create-page">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Inquiry</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            </Helmet>
             <NavBarCreate/>
             <LeftMenu/>
             
@@ -126,7 +132,7 @@ const CreatePage = () => {
                      </box>
 
                 </div>
-            ) : <h1>Welcome to Script Adventure</h1>
+                ) : <h3 className="welcome-message">Welcome to Script Adventure</h3>
             }
             <SideBar/>
             

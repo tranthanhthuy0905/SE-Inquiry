@@ -158,6 +158,7 @@ nav {
   background: var(--clr-grey-9);
   height: 73px;
 }
+
 .nav-header {
   position: absolute;
   left: 30px;
@@ -165,6 +166,7 @@ nav {
   justify-content: space-between;
   padding: 1px;
 }
+
 .nav-toggle {
   font-size: 1.5rem;
   color: var(--clr-primary-5);
@@ -174,10 +176,12 @@ nav {
   cursor: pointer;
   margin-right: 10px;
 }
+
 .nav-toggle:hover {
   color: var(--clr-primary-1);
   transform: rotate(90deg);
 }
+
 .initial-container {
   max-width: 1170px;
   margin: 0 auto;
@@ -189,6 +193,7 @@ nav {
   justify-content: space-between;
   padding: 2px;
 }
+
 .second-container {
   max-width: 1170px;
   margin: 0 auto;
@@ -200,6 +205,7 @@ nav {
   justify-content: space-between;
   padding: 1px;
 }
+
 .logo {
   height: 50px;
   width: 70px;
@@ -218,23 +224,23 @@ nav {
   font-size: 1rem;
   margin: 20px 0;
 }
+
 .notification {
   position: relative;
   display: none;
 }
+
 .notBtn {
   width: 50px;
   height: 50px;
 }
+
 .notification-bell {
-  font-size: 25pt;
-  padding-bottom: 7px;
+  position: absolute;
+  top: 11px;
+  right: 23px;
+  font-size: 40px;
   color: white;
-  margin-right: 25px;
-  margin-left: 40px;
-  justify-content: right;
-  align-items: right;
-  float: right;
 }
 .notification-bell:hover {
   color: black;
@@ -257,6 +263,7 @@ nav {
   border: 2px solid black;
   border-radius: 5px;
 }
+
 .avatar {
   vertical-align: middle;
   horizontal-align: middle;
@@ -266,6 +273,7 @@ nav {
   margin: 5px;
   display: none;
 }
+
 .links a {
   color: var(--clr-grey-4);
   font-size: 1rem;
@@ -274,12 +282,15 @@ nav {
   display: inline-block;
   padding: 0.5rem 1rem;
   transition: var(--transition);
+  font-weight: 600;
 }
+
 .links a:hover {
   background: var(--clr-primary-9);
   color: var(--clr-primary-5);
   padding-left: 1.5rem;
 }
+
 .links-container {
   height: 0;
   overflow: hidden;
@@ -288,11 +299,14 @@ nav {
   letter-spacing: var(--spacing);
   margin-right: 30px;
 }
+
 .number {
-  position: relative;
-  top: 0;
-  right: 0;
-  float: right;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  color: red;
 }
 
 .setting-list {
@@ -456,7 +470,7 @@ nav {
   position: absolute;
   left: 10px;
   top: 10px;
-  width: 700px;
+  width: 330px;
 }
 
 .utils-list {
@@ -487,7 +501,7 @@ nav {
 
 .creator-center {
   position: absolute;
-  left: 560px;
+  left: 530px;
   top: 20px;
   width: 400px;
   background: var(--clr-primary-7);
