@@ -6,19 +6,23 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import './navbar.css';
 
 const NavBarCreate = () => {
-    const [name, setName] = useState('Untitled');
+
+    const [name, setName] = useState(JSON.parse(localStorage.getItem('script')).scriptName);
 
     const handleNameChange = (val) => {
         setName(val.target.value);
         // Save data here
+        const script = JSON.parse(localStorage.getItem('script'));
+        script.scriptName = name;
+        localStorage.setItem('script', script);
     }
 
     const handleCancel = (e) => {
-
+        localStorage.clear();
     }
 
     const handleSave = (e) => {
-
+        localStorage.clear();
     }
 
     return (

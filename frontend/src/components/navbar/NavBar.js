@@ -5,6 +5,7 @@ import {links} from '../../data/navbar';
 import logo from '../../assets/logo.png';
 import './navbar.css';
 import avatar from '../../assets/avatar.png';
+import { useNavigate } from 'react-router';
 
 const NavBar = () => {
   const [result, setResult] = useState('');
@@ -15,7 +16,7 @@ const NavBar = () => {
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
-
+  
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
     if (showLinks) {
@@ -25,12 +26,23 @@ const NavBar = () => {
     }
   }, [showLinks]);
 
+  const showSetting = () => {
+    var SettingToggle = document.getElementsByClassName("setting-list");
+    Array.from(SettingToggle).forEach((SettingToggle) => {
+        if (SettingToggle.style.display == "none") {
+          SettingToggle.style.display = "block";
+        } else {
+          SettingToggle.style.display = "none";
+        }
+    })
+  }
+
   return (
     <nav>
         <div className='nav-center'>
           {/* Logo */}
           <div className='nav-header'>
-            <img src={logo} className='logo' alt='logo' /> 
+            <img src={logo} className='logo' alt='logo'/> 
             <FontAwesomeIcon icon={faBars} className='nav-toggle'/>
           </div>
           <div className = 'initial-container'>
@@ -80,7 +92,15 @@ const NavBar = () => {
             </div>
 
             {/* Avatar */}
-            <img src={avatar} className='avatar' alt='avatar' /> 
+            <img src={avatar} className='avatar' alt='avatar' onClick={showSetting}/>
+
+            <ul className='setting-list' style={{display: 'none'}}>
+              <button className='view-profile'>View Profile</button>
+              <button className='view-setting'>Setting</button>
+              <button className='view-account'>Account</button>
+              <button className='view-help'>Help selection</button>
+              <button className='logout-button'>Logout</button>
+            </ul>
 
           </div> 
 

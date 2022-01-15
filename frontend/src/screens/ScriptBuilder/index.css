@@ -16,6 +16,8 @@
 }
 .script-container {
   position: absolute;
+  top: 90px;
+  left: 10px;
   min-height: 100vh;
   margin-top: -5rem;
 }

@@ -40,6 +40,12 @@
   --fixed-width: 620px;
 }
 
+.create-page {
+  height: 731px;
+  background-color: var(--clr-grey-10);
+}
+
+
 .editor-canvas {
   top: 73px;
   left: 240px;
@@ -47,7 +53,8 @@
   bottom: 0px;
 
   width: (max-content - 480px);
-  height: 698px;
+  height: 658px;
+
   position: absolute;
 
   background: var(--clr-grey-10);
@@ -95,6 +102,8 @@
   margin: 10px 0px;
 
   outline: none;
+  background: var(--clr-grey-10);
+  border: none;
 }
 
 .desc-input {
@@ -198,7 +207,10 @@
   align-self: stretch;
   flex-grow: 0;
   margin: 10px 0px;
+
   outline: none;
+  background: var(--clr-grey-10);
+  border: none;
 }
 
 .choice-helper {

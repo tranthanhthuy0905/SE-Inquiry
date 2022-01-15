@@ -1,23 +1,22 @@
 package backend.main.Pojos;
 
+import backend.main.models.Script;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import java.sql.Timestamp;
 import java.util.*;
 
+@Data
 public class ChoiceRequest {
 
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+    public UUID scriptID;
+    //public UUID choiceID;
+    public String content;
 
-    public Timestamp updatedAt;
-
-    public UUID textID;
-
-    public ChoiceRequest(@JsonProperty("textId") UUID textID, @JsonProperty("updatedAt") Timestamp updatedAt) {
-        this.textID = textID;
-        this.updatedAt = updatedAt;
-
+    public ChoiceRequest(UUID scriptID, String content) {
+        this.scriptID = scriptID;
+        //this.choiceID = choiceID;
+        this.content = content;
     }
 }
