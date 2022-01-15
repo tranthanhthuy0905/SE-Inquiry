@@ -1,15 +1,12 @@
 package backend.main.controllers;
 import backend.main.Pojos.MatchRequest;
 import backend.main.Pojos.ScriptRequest;
-import backend.main.Pojos.TextRequest;
 import backend.main.exceptions.ApiRequestException;
 import backend.main.models.Script;
-import backend.main.models.Text;
 import backend.main.repositories.ScriptRepository;
 import backend.main.services.ScriptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

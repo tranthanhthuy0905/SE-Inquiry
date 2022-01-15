@@ -7,7 +7,6 @@ import Connection from './screens/Connection/Connection';
 import PreviewPage from './screens/Preview/PreviewPage';
 import {Provider} from 'react-redux';
 import store from './redux/store';
-import PreviewPageFake from './screens/Preview/PreviewFake.js'
 
 function App() {
   return ( 
@@ -20,7 +19,6 @@ function App() {
           <Route path="/script-creating" element={<ScriptCreate/>}/>
           <Route path="/connections" element={<Connection/>}/>
           <Route path="/preview" element={<PreviewPage/>}/>
-          <Route path="/previewfake" element={<PreviewPageFake />} />
         </Routes>
       </Router>
     </Provider>

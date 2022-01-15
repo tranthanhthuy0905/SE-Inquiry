@@ -5,7 +5,7 @@ import LeftMenu from "../../components/sidebar-left/LeftMenu";
 import SideBar from '../../components/sidebar-right/SideBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {fetchText} from '../../redux';
-import { Button } from 'antd';
+import { Button, Divider } from 'antd';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -31,8 +31,6 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
         ) : (
             <body className="preview-page">
                 <NavBar/>
-                <LeftMenu hidden/>
-                <SideBar/>
                 <div className="preview-container">
                     <section className="preview-header">
                         <div className="chapter-title">{text && text.title}</div>
@@ -53,9 +51,9 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
                                 </div>
                             ) : (<div></div>)
                         }
-                    </section>
-                    <section className="preview-btns">
-                        { finish ? <Button className='finish=btn' onClick={onBackHome}>Finish</Button> : <div></div>}
+                        <div className="preview-btns">
+                            { finish ? <Button className='finish=btn' onClick={onBackHome}>Finish</Button> : <div></div>}
+                        </div>
                     </section>
                 </div>
             </body>
