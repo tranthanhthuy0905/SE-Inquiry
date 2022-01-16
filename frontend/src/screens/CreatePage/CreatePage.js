@@ -14,25 +14,19 @@ const CreatePage = () => {
 
     let script = JSON.parse(localStorage.getItem('script'));
     let mainContent = script.mainContent;
+    let chapters = script.chapters;
     let text = {};
-    let choices = []; 
+    let choices = [];
 
     if (pageName !== '') {
-        if (mainContent[pageName] !== {}) {
+        if (mainContent[pageName] !== undefined) {
             text = mainContent[pageName];
             if (text.choices !== undefined) {
                 choices = text.choices;
             }
         }
     }
-
-    let initialPageTitle = '';
-    console.log(pageName)
-    // if (script.mainContent.text !== undefined) {
-    //     initialPageTitle = script.mainContent.text.title;
-    // } else {
-    //     initialPageTitle = script.mainContent[pageName].title;
-    // }
+    console.log('pageName', pageName)
     const [pageTitle, setPageTitle] = useState(pageName);
     const [pageContent, setPageContent] = useState(text.content || 'Enter your chapter description here')
     const [choiceContent, setChoiceContent] = useState('Enter your choice content');
@@ -41,50 +35,87 @@ const CreatePage = () => {
         dispatch(doneSelectPage);
     }
 
-    const changeAddChoiceToFalse = () => {
-        dispatch(doneAddChoice);
+    const showChoice = () => {
         return (
-            <input className='choice1' contentEditable="true" value={choiceContent} onChange={handleAddChoice}/>
+            <input className='choice-input' contentEditable="true" value={choiceContent} onKeyPress={handleAddChoiceEnter} onChange={handleAddChoice}/>
         )
     }
 
-    const handleTitleChange = (val) => {
-        const oldTitle = text.title;
-        setPageTitle(val.target.value);
-        // update to localStorage new Chapter title
-        text.title = pageTitle;
-        delete mainContent[oldTitle];
-        mainContent.pageTitle = text;
-        script.mainContent = mainContent;
-        localStorage.setItem('script', script);
+    const changeAddChoiceToFalse = () => {
+        showChoice();
+        dispatch(doneAddChoice);
     }
 
-    function process(e) {
+    const handleTitleChange = (val) => {
+        setPageTitle(val.target.value);
+    }
+    
+    const handleTextContentChange = (e) => {
+        setPageContent(e.target.value);
+    } 
+
+    const handleChangeChoiceContent = (e) => {
+        setChoiceContent(e.target.value);
+    }
+
+    const handleAddChoice = (val) => {
+        setChoiceContent(val.target.value);
+    }
+
+    const handleTextTitleEnter = (e) => {
+        var key = (e.keyCode ? e.keyCode : e.which);
+        // hit Enter (code of Enter btn = 13)
+        if (key == 13) {
+            const oldTitle = text.title;
+            // update to localStorage new Chapter title
+            text.title = e.target.value;
+            delete mainContent[oldTitle];
+            mainContent.pageTitle = text;
+            const chapter = chapters.indexOf(oldTitle);
+            chapters[chapter] = e.target.value;
+            script.mainContent = mainContent;
+            script.chapters = chapters;
+            localStorage.setItem('script', JSON.stringify(script));
+        }
+        console.log('text1', text);
+        console.log('mainContent1', mainContent);
+        console.log('script1', script);
+    }
+
+    const handleTextContentEnter = (e) => {
         var key = (e.keyCode ? e.keyCode : e.which);
         // hit Enter (code of Enter btn = 13)
         if (key == 13) {
             text.content = e.target.value;
             mainContent.pageTitle = text;
             script.mainContent = mainContent;
-            localStorage.setItem('script', script);
+            localStorage.setItem('script', JSON.stringify(script));
         }
+        console.log('text2', text);
+        console.log('mainContent2', mainContent);
+        console.log('script2', script);
     }
 
-    const handleAddChoice = (val) => {
-        const choice = {};
-        setChoiceContent(val.target.value);
-        // update to new Script after adding Choice
-        choice.content = choiceContent;
-        choices.push(choice);
-        text.choices = choices;
-        mainContent.pageTitle = text;
-        script.mainContent = mainContent;
-        localStorage.setItem('script', script);
+    const handleAddChoiceEnter = (e) => {
+        var key = (e.keyCode ? e.keyCode : e.which);
+        // hit Enter (code of Enter btn = 13)
+        if (key == 13) {
+            const choice = {};
+            // update to new Script after adding Choice
+            choice.content = e.target.value;
+            choices.push(choice);
+            text.choices = choices;
+            mainContent.pageTitle = text;
+            script.mainContent = mainContent;
+            localStorage.setItem('script', JSON.stringify(script));
+        }
+        console.log('text3', text);
+        console.log('mainContent3', mainContent);
+        console.log('script3', script);
     }
 
-    const handleChangeChoiceContent = (val) => {
+    const handleChangeChoiceEnter = (e) => {
         const oldChoice = choiceContent;
-        setChoiceContent(val.target.value);
         // update to localStorage new Chapter title
         let existedChoice = choices.filter((choice) => choice.content === oldChoice);
         existedChoice.content = choiceContent;
@@ -93,8 +124,9 @@ const CreatePage = () => {
         text.choices = choices;
         mainContent.pageTitle = text;
         script.mainContent = mainContent;
-        localStorage.setItem('script', script);
+        localStorage.setItem('script', JSON.stringify(script));
     }
+
     return (
         <body className="create-page">
             <Helmet>
@@ -106,31 +138,29 @@ const CreatePage = () => {
             <LeftMenu/>
             
             { select === true ? (
-               
                 <div className='editor-canvas'>
-                     {/* {changeSelectedBackToFalse} */}
-                <box className="page-desc-box">
-                    <input className="desc-label" type="text" contentEditable="true" onChange={handleTitleChange} value={pageTitle}/>
-                    <textarea className="desc-input" contentEditable="true" value={pageContent} onKeyPress="process(event, this)" />
-                    <h5 className="desc-helper">Press "Ctrl" + "Enter" to temporarily save</h5>
-                </box>
+                    <box className="page-desc-box">
+                        <input className="desc-label" type="text" contentEditable="true" onChange={(e) => handleTitleChange} value={pageTitle}/>
+                        <textarea className="desc-input" contentEditable="true" value={pageContent} onKeyPress={handleTextContentEnter} onChange={handleTextContentChange}  />
+                        <h5 className="desc-helper">Press "Ctrl" + "Enter" to temporarily save</h5>
+                    </box>
 
-                     <box className="choice-box">
-                         {choices !== [] ? (
+                    <box className="choice-box">
+                        {choices !== [] ? (
                             <ul className='choice-list'>
                                 {
                                     choices.map((choice) => {
                                         setChoiceContent(choice.content);
                                         return (
-                                            <input className='choice' id={choiceContent} contentEditable="true" value={choiceContent} onChange={handleChangeChoiceContent}/>
+                                            <input className='choice-input' id={choiceContent} contentEditable="true" value={choiceContent} onKeyPress={handleChangeChoiceEnter} onChange={handleChangeChoiceContent}/>
                                         )
                                     })
                                 }
                             </ul>
                         ) : <div></div>}
-                         {addChoice ? changeAddChoiceToFalse : <div></div>}
-                     </box>
-
+                        {addChoice ? changeAddChoiceToFalse : <div></div>}
+                    </box>
+                    {changeSelectedBackToFalse}
                 </div>
                 ) : <h3 className="welcome-message">Welcome to Script Adventure</h3>
             }
@@ -142,17 +172,4 @@ const CreatePage = () => {
     
 }
 
-export default CreatePage;
-
-// Contents of middle page
-{/* let newPage = Object.create(Page);
-        newPage.pageName = pageName;
-        newPage.pageLink+= pageName;
-        newPage.descLabel= 'Page Description';
-        newPage.descInput= 'The description for this page';
-        newPage.choiceLabel= 'Choices';
-        newPage.choice1Link+=newPage.pageLink;
-        newPage.choice2Link+=newPage.pageLink;
-        newPage.choice3Link+=newPage.pageLink;
-        newPage.choice4Link+=newPage.pageLink; 
-*/}
+export default CreatePage

@@ -1,6 +1,5 @@
 package backend.main.Pojos;
 
-import backend.main.models.Text;
 import lombok.Data;
 import org.springframework.lang.*;
 
@@ -17,9 +16,9 @@ public class ScriptRequest {
         this.author = author;
     }
 
-    @Nullable public String title;
+    public String title;
 
-    @Nullable public String description;
+    public String description;
 
-    @Nullable public String author;
+    public String author;
 }
