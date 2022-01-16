@@ -24,7 +24,6 @@ function App() {
           <Route path="/preview" element={<PreviewPage/>}/>
           <Route path="/individual" element={<IndvPage />}/>
           <Route path="/your-list" element={<YourList/>}/>
-          <Route path="/preview-fake" element={<PreviewFake />}/>
         </Routes>
       </Router>
     </Provider>

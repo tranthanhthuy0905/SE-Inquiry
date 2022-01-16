@@ -24,6 +24,8 @@ const Menu = () => {
         return alert("Story added to list.")
     }
 
+    console.log('prevLocalStorage', localStorage.getItem('script'));
+
     return (
 
         <div className='Menu'>

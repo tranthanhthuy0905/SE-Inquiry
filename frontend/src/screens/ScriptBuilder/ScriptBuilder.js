@@ -11,19 +11,13 @@ const ScriptBuilder = () => {
     let navigate = useNavigate();
 
     const onCreateScript = () => { 
+        localStorage.clear();
         const storedData = {
             scriptName: 'Untitled',
-            mainContent: {
-                text: {
-                    title: '',
-                    content: '',
-                    choices: []
-                }
-            },
+            mainContent: {},
             chapters: []
         }   
         localStorage.setItem('script', JSON.stringify(storedData));
-        console.log('awcretec', localStorage.getItem('script'));
         navigate('/create-page');
     }
 

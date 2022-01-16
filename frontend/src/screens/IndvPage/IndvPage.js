@@ -6,11 +6,18 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BookOpen from '../../assets/book-open.png';
 import Tag from '../../assets/tag.png';
 import Star from '../../assets/star.png';
+import { useNavigate } from 'react-router-dom';
 
 const IndvPage = () => {
 
+  let navigate = useNavigate();
+
   const addToList = () => {
     return alert("Story added to list.")
+  }
+
+  const navigatePreview = () => {
+    navigate('/preview')
   }
 
   return (
@@ -42,8 +49,8 @@ const IndvPage = () => {
                 <span className="rating-idv">{rating}</span>  
               </div>
  
-              <button className="read-button-idv" >
-              <a className="game-link-idv" href={link}>Read</a>
+              <button className="read-button-idv" onClick={navigatePreview}>
+                <a className="game-link-idv" href={link}>Read</a>
               </button>
               <button className="add-to-list-idv" onClick={addToList}>Add to List</button>
 

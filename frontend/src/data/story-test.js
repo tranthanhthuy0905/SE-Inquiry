@@ -1,4 +1,4 @@
-import LateShift from '../assets/late-shift.jpg';
+import Demo from '../assets/Demo.JPG';
 import TheComplex from '../assets/the-complex.jfif';
 import ShapeShifting from '../assets/shapeshifting.jpg';
 import ISawBlackCloud from '../assets/isbc.jpg';
@@ -7,12 +7,12 @@ import NightBook from '../assets/night-book.jpg';
 
 export const stories = [
     {
-        title: 'Late Shift',
-        picture: LateShift,
-        link: 'https://store.steampowered.com/app/584980/Late_Shift/',
+        title: 'DEMO SCRIPT',
+        picture: Demo,
+        link: '/individual',
         view: 6589,
         tag: 'Adventure',
-        description: 'Late Shift is a high stakes FMV crime thriller. Forced into a brutal London heist, your choices matter in this interactive cinematic experience with adaptable storylines that lead to one of seven conclusions. Your decisions are you.',
+        description: 'The DEMO SCRIPT is designed for demo purpose. Enjoy your adventure.',
         rating: 4.8,
     },
     {

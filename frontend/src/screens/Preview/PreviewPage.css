@@ -115,6 +115,8 @@
   line-height: 24px;
   text-align: justify;
   color: var(--clr-primary-1);
+  white-space: pre-line;
+  vertical-align: bottom;
 }
 .choice-container {
   position: relative;

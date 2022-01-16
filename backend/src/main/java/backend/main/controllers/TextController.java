@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Timestamp;
 import java.util.*;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 @RequestMapping("api/v1/text")
 public class TextController {
     @Autowired
@@ -35,18 +34,19 @@ public class TextController {
     public Dictionary getAllTexts(@RequestParam("limit") int limit, @RequestParam("offset") int offset) {
         return textService.findAllTexts(limit, offset);
     }
-
-    @GetMapping("/Ngao")
-    public ResponseEntity<?> getAllTextsWithPage(@RequestParam(defaultValue = "0") int page,
-                                                 @RequestParam(defaultValue = "5") int size) {
-        Pageable pageable = PageRequest.of(page,size);
-        return new ResponseEntity<>(textService.findAllWithPage(pageable), HttpStatus.OK) ;
-    }
+//
+//    @GetMapping("/")
+//    public ResponseEntity<?> getAllTextsWithPage(@RequestParam(defaultValue = "0") int page,
+//                                                 @RequestParam(defaultValue = "5") int size) {
+//        Pageable pageable = PageRequest.of(page,size);
+//        return new ResponseEntity<>(textService.findAllWithPage(pageable), HttpStatus.OK) ;
+    //}
 //    @GetMapping("title")
 //    public Optional<Text> getTextByTitle(@RequestBody Text text) {
 //        return textService.getTextByTitle(text.getTitle());
 //    }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "detail/{textId}")
     public Optional<Text> getTextById(@PathVariable("textId") UUID textID) {
         return textService.getTextByTextID(textID);
@@ -78,8 +78,8 @@ public class TextController {
 //    }
 
     @PutMapping("matchChoice")
-    public Text matchTextToChoice(@RequestBody MatchRequest request) {
-        return textService.MatchTextToChoice(request.getTextId(), request.getChoiceId());
+    public Text matchChoiceToText(@RequestBody MatchRequest request) {
+        return textService.MatchChoiceToText(request.getTextId(), request.getChoiceId());
     }
 
     @DeleteMapping("/deleteAll")

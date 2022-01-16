@@ -126,7 +126,7 @@ public Page<Text> findAllWithPage(Pageable pageable){
 //        return textRepository.save(textUpdate);
 //    }
 
-    public Text MatchTextToChoice(UUID textID, UUID choiceID) {
+    public Text MatchChoiceToText(UUID textID, UUID choiceID) {
         Text text = textRepository.findByTextID(textID).get();
         Choice choice = choiceRepository.findByChoiceID(choiceID).get();
         Set<Choice> choices = text.getChoices();
