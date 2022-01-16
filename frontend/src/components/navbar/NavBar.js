@@ -13,6 +13,8 @@ const NavBar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
+  let navigate = useNavigate();
+
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
@@ -42,7 +44,9 @@ const NavBar = () => {
         <div className='nav-center'>
           {/* Logo */}
           <div className='nav-header'>
-            <img src={logo} className='logo' alt='logo'/> 
+            <a href='/'>
+              <img src={logo} className='logo' alt='logo' onClick={()=> navigate('/')}/> 
+            </a>
             <FontAwesomeIcon icon={faBars} className='nav-toggle'/>
           </div>
           <div className = 'initial-container'>

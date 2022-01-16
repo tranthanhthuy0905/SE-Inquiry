@@ -7,15 +7,73 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Data @NoArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "script_db")
 public class Script {
+
+    public UUID getScriptID() {
+        return scriptID;
+    }
+
+    public void setScriptID(UUID scriptID) {
+        this.scriptID = scriptID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Timestamp getPublishedAt() {
+        return publishedAt;
+    }
+
+    public void setPublishedAt(Timestamp publishedAt) {
+        this.publishedAt = publishedAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Set<Text> getTexts() {
+        return texts;
+    }
+
+    public void setTexts(Set<Text> texts) {
+        this.texts = texts;
+    }
 
     @Id
     private UUID scriptID;

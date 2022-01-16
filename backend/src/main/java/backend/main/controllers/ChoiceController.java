@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 @RequestMapping("api/v1/choice")
 public class ChoiceController {
 
@@ -27,6 +28,7 @@ public class ChoiceController {
     @RequestMapping(value = "/create", method = RequestMethod.POST,
             consumes = "application/json")
     public ResponseEntity<?> createChoice(@RequestBody ChoiceRequest choice) {
+        System.out.println(choice);
         Choice choiceInput = new Choice(choice.getScriptID(), choice.getContent());
         return new ResponseEntity<>(choiceRepository.save(choiceInput), HttpStatus.OK) ;
     }

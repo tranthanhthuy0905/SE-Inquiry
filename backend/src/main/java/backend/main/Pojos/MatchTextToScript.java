@@ -7,8 +7,9 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class MatchRequest {
+public class MatchTextToScript {
 
     private UUID textId;
-    private UUID choiceId;
+    private UUID scriptId;
 }
+

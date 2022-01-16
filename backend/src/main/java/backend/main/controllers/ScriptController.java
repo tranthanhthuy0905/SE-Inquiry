@@ -1,7 +1,7 @@
 package backend.main.controllers;
 import backend.main.Pojos.MatchRequest;
+import backend.main.Pojos.MatchTextToScript;
 import backend.main.Pojos.ScriptRequest;
-import backend.main.Pojos.TextRequest;
 import backend.main.exceptions.ApiRequestException;
 import backend.main.models.Script;
 import backend.main.models.Text;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 @RequestMapping("api/v1/script")
 public class ScriptController {
 
@@ -66,7 +67,7 @@ public class ScriptController {
     }
 
     @PutMapping("matchScript")
-    public Script matchTextToScript(@RequestBody MatchRequest request) {
+    public Script matchTextToScript(@RequestBody MatchTextToScript request) {
         return scriptService.MatchTextToScript(request.getTextId(), request.getScriptId());
     }
 

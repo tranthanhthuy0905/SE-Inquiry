@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.*;
 
-@Entity @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "text")
@@ -25,9 +25,65 @@ public class Text {
     private Timestamp updatedAt;
 
 
+    public UUID getTextID() {
+        return textID;
+    }
+
+    public void setTextID(UUID textID) {
+        this.textID = textID;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Script getScript() {
+        return script;
+    }
+
+    public void setScript(Script script) {
+        this.script = script;
+    }
+
+    public Set<Choice> getChoices() {
+        return choices;
+    }
+
+    public void setChoices(Set<Choice> choices) {
+        this.choices = choices;
+    }
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "script_id", referencedColumnName = "scriptId")
+    @JoinColumn(name = "text_id", referencedColumnName = "scriptId")
     private Script script;
 
     @JsonManagedReference

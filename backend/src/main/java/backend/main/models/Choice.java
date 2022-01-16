@@ -1,6 +1,7 @@
 package backend.main.models;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -11,6 +12,7 @@ import java.util.*;
 import javax.persistence.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "choice")
 public class Choice {

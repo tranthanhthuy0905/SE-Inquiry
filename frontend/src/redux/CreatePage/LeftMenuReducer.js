@@ -22,8 +22,7 @@ const LeftMenuReducer = (state = initialState, action) => {
         case DONE_SELECT_PAGE:
             return {
                 ...state,
-                select: false,
-                pageName: ''
+                select: false
             }
         case DONE_ADD_CHOICE:
             return {

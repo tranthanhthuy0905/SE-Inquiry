@@ -17,7 +17,7 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
     const onBackHome = () => {
         navigate('/');
     }
-    let scriptID = '67ddf0be-50ab-44fd-85fa-b0d5284bd52a';
+    let scriptID = 'c09407e6-3cbd-464a-b7a9-a3f8dfbfdc2c';
     let Uri = 'http://localhost:8080/api/v1/text/detail/';
     useEffect(() => {
         const textUri = Uri + scriptID;
@@ -31,8 +31,6 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
         ) : (
             <body className="preview-page">
                 <NavBar/>
-                <LeftMenu hidden/>
-                <SideBar/>
                 <div className="preview-container">
                     <section className="preview-header">
                         <div className="chapter-title">{text && text.title}</div>
