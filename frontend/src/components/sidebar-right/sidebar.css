@@ -46,7 +46,7 @@
   float: right;
   position: absolute;
   width: 240px;
-  height: 658px;
+  height: 747px;
 
   top: 73px;
   right: 0px;
@@ -135,4 +135,10 @@
   color: #999999;
   background: white;
   border: hidden;
+}
+
+@media screen and (width=1440px) and (height=820px) and (-webkit-min-device-pixel-ratio: 1) {
+  .left-menu {
+    height: 820px;
+  }
 }

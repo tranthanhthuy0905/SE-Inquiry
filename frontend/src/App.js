@@ -7,6 +7,9 @@ import Connection from './screens/Connection/Connection';
 import PreviewPage from './screens/Preview/PreviewPage';
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import IndvPage from "./screens/IndvPage/IndvPage";
+import YourList from './screens/YourList/YourList';
+import PreviewFake from './screens/Preview/PreviewFake';
 
 function App() {
   return ( 
@@ -19,6 +22,8 @@ function App() {
           <Route path="/script-creating" element={<ScriptCreate/>}/>
           <Route path="/connections" element={<Connection/>}/>
           <Route path="/preview" element={<PreviewPage/>}/>
+          <Route path="/individual" element={<IndvPage />}/>
+          <Route path="/your-list" element={<YourList/>}/>
         </Routes>
       </Router>
     </Provider>

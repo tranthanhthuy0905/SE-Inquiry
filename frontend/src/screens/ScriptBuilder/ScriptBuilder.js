@@ -4,18 +4,36 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router-dom';
 import './index.css';
-
+import {Helmet} from "react-helmet";
 
 const ScriptBuilder = () => {
     
     let navigate = useNavigate();
 
-    const onCreateScript = () => {
+    const onCreateScript = () => { 
+        const storedData = {
+            scriptName: 'Untitled',
+            mainContent: {
+                text: {
+                    title: '',
+                    content: '',
+                    choices: []
+                }
+            },
+            chapters: []
+        }   
+        localStorage.setItem('script', JSON.stringify(storedData));
+        console.log('awcretec', localStorage.getItem('script'));
         navigate('/create-page');
     }
 
     return (
         <div className='container'>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Inquiry</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            </Helmet>
             <NavBar/>
             
             <section className='script-container'>
