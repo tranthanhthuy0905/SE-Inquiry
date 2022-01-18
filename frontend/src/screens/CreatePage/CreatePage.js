@@ -26,8 +26,9 @@ const CreatePage = () => {
             }
         }
     }
-    console.log('pageName', pageName)
-    const [pageTitle, setPageTitle] = useState(pageName);
+    const titleData = JSON.parse(localStorage.getItem('script')).chapters.filter((title) => title === pageName).pop();
+    console.log('title', titleData)
+    const [pageTitle, setPageTitle] = useState(JSON.parse(localStorage.getItem('script')).chapters.filter((title) => title === pageName).pop());
     const [pageContent, setPageContent] = useState(text.content || 'Enter your chapter description here')
     const [choiceContent, setChoiceContent] = useState('Enter your choice content');
 
@@ -36,10 +37,10 @@ const CreatePage = () => {
     }
 
     const showChoice = () => {
-        return (
-            <input className='choice-input' contentEditable="true" value={choiceContent} onKeyPress={handleAddChoiceEnter} onChange={handleAddChoice}/>
-        )
-    }
+        // return (
+        //     <input className='choice-input' contentEditable="true" value={choiceContent} onKeyPress={handleAddChoiceEnter} onChange={handleAddChoice}/>
+        // )
+        return <h1>Add Choice</h1>    }
 
     const changeAddChoiceToFalse = () => {
         showChoice();
@@ -127,6 +128,7 @@ const CreatePage = () => {
         localStorage.setItem('script', JSON.stringify(script));
     }
 
+    console.log('add chocie', addChoice)
     return (
         <body className="create-page">
             <Helmet>
@@ -158,7 +160,7 @@ const CreatePage = () => {
                                 }
                             </ul>
                         ) : <div></div>}
-                        {addChoice ? changeAddChoiceToFalse : <div></div>}
+                        {addChoice ? showChoice : <div></div>}
                     </box>
                     {changeSelectedBackToFalse}
                 </div>

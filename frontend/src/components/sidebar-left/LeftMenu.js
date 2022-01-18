@@ -58,7 +58,7 @@ const LeftMenu = () => {
     }
 
     const addChoices = () => {
-        if (script.mainContent !== {}) {
+        if (script.mainContent) {
             if (select) {
                 dispatch(addChoice());
             }

@@ -26,9 +26,9 @@ public class TextService {
 
     }
 
-//    public Optional<Text> getTextByTitle(String title) {
-//        return textRepository.findTextByTitle(title);
-//    }
+    public Optional<Text> getTextByTitle(String title) {
+        return textRepository.findTextByTitle(title);
+    }
 
     public Dictionary findAllTexts(int limit, int offset) {
 

@@ -17,8 +17,8 @@ public interface TextRepository extends JpaRepository<Text, UUID> {
 //    @Query(value="SELECT * FROM text WHERE scriptid = :scriptId ORDER BY text.created_at ASC", nativeQuery = true)
 //    List<Text> findByScriptID(@Param("scriptId")UUID scriptID);
 
-//    @Query(value="SELECT * FROM text WHERE title = :title", nativeQuery = true)
-//    Optional<Text> findTextByTitle(@Param("title") String title);
+    @Query(value="SELECT * FROM text WHERE title = :title", nativeQuery = true)
+    Optional<Text> findTextByTitle(@Param("title") String title);
 
     @Query(value="DELETE FROM text_choice", nativeQuery = true)
     Void deleteAllTextChoice();

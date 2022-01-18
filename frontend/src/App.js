@@ -9,7 +9,6 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import IndvPage from "./screens/IndvPage/IndvPage";
 import YourList from './screens/YourList/YourList';
-import PreviewFake from './screens/Preview/PreviewFake';
 
 function App() {
   return ( 

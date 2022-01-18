@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BookOpen from '../../assets/book-open.png';
 import Tag from '../../assets/tag.png';
 import Star from '../../assets/star.png';
-import stories from '../../data/StoryCreated'
+import TestStory1 from '../../data/TestStory1'
 
 const YourList = () => {
 
@@ -21,7 +21,7 @@ const YourList = () => {
             </div>
 
             <ul className = "story-list">
-                {stories.map((story) => {
+                {TestStory1.map((story) => {
                 const { title, picture, link, view, tag, description} = story;
                 return (
                     <li className={title}>                        

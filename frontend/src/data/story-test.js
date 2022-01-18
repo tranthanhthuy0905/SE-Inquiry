@@ -7,12 +7,12 @@ import NightBook from '../assets/night-book.jpg';
 
 export const stories = [
     {
-        title: 'DEMO SCRIPT',
+        title: 'DEMO STORY',
         picture: Demo,
         link: '/individual',
         view: 6589,
         tag: 'Adventure',
-        description: 'The DEMO SCRIPT is designed for demo purpose. Enjoy your adventure.',
+        description: 'The DEMO STORY is designed for demo purpose. Enjoy your adventure.',
         rating: 4.8,
     },
     {

@@ -11,6 +11,7 @@ const ScriptBuilder = () => {
     let navigate = useNavigate();
 
     const onCreateScript = () => { 
+        console.log('prevLocalStorage', JSON.parse(localStorage.getItem('script')))
         localStorage.clear();
         const storedData = {
             scriptName: 'Untitled',

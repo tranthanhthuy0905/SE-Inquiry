@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
-@CrossOrigin(maxAge = 3600)
 @RestController
 @CrossOrigin(origins="http://localhost:3000")
 @RequestMapping("api/v1/text")
@@ -41,10 +40,11 @@ public class TextController {
 //        Pageable pageable = PageRequest.of(page,size);
 //        return new ResponseEntity<>(textService.findAllWithPage(pageable), HttpStatus.OK) ;
     //}
-//    @GetMapping("title")
-//    public Optional<Text> getTextByTitle(@RequestBody Text text) {
-//        return textService.getTextByTitle(text.getTitle());
-//    }
+
+    @GetMapping("title")
+    public Optional<Text> getTextByTitle(@RequestBody Text text) {
+        return textService.getTextByTitle(text.getTitle());
+    }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(path = "detail/{textId}")
