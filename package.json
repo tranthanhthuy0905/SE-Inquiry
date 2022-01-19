@@ -10,9 +10,12 @@
     "antd": "^4.17.4",
     "draft-js": "^0.11.7",
     "flume": "^0.6.3",
+    "geckodriver": "^3.0.1",
+    "mocha": "^9.1.4",
     "next": "^12.0.7",
     "react-draft-wysiwyg": "^1.14.7",
     "react-icons": "^4.3.1",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "selenium-webdriver": "^4.1.1"
   }
 }
