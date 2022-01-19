@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const IndvPage = () => {
 
   let navigate = useNavigate();
+  let ratingList = [1,2,3,4,5];
 
   const addToList = () => {
     return alert("Story added to list.")
@@ -19,6 +20,7 @@ const IndvPage = () => {
   const navigatePreview = () => {
     navigate('/preview')
   }
+
 
   return (
     <div>
@@ -45,7 +47,14 @@ const IndvPage = () => {
               </div>         
               <div className='story-rating-idv'>
                 <p className="rating-tag-idv">Ratings</p>
-                <img className='star-idv' src={Star} />
+                <ul className='ratings-container'>
+                  {
+                    ratingList.map((rate) => {
+                        return (<img className='star-idv' src={Star} />)
+                      }
+                    )
+                  }
+                </ul>
                 <span className="rating-idv">{rating}</span>  
               </div>
  

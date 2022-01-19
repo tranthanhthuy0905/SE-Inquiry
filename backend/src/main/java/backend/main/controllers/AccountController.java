@@ -3,6 +3,8 @@ package backend.main.controllers;
 
 import backend.main.jwt.JwtUtility;
 import backend.main.models.Account;
+import backend.main.models.Script;
+import backend.main.models.Text;
 import backend.main.payload.reponse.JwtResponse;
 import backend.main.payload.reponse.MessageResponse;
 import backend.main.payload.request.LoginRequest;
@@ -10,6 +12,8 @@ import backend.main.payload.request.SignupRequest;
 import backend.main.payload.request.VerifyRequest;
 import backend.main.services.AccountService;
 import backend.main.services.RoleService;
+import backend.main.services.ScriptService;
+import backend.main.services.TextService;
 import backend.main.services.impl.AccountDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,15 +30,20 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("api/public")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AccountController {
 
     @Autowired
     private JwtUtility jwtUtility;
+
+    @Autowired
+    private TextService textService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -108,5 +117,10 @@ public class AccountController {
         } else {
             return ResponseEntity.ok(new MessageResponse("OTP is incorrect!"));
         }
+    }
+
+    @GetMapping(path = "text/detail/{textId}")
+    public Optional<Text> getTextById(@PathVariable("textId") UUID textID) {
+        return textService.getTextByTextID(textID);
     }
 }

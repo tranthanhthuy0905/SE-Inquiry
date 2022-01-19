@@ -4,51 +4,51 @@ import NavBarCreate from "../../components/navbar/NavBarCreate";
 import LeftMenu from "../../components/sidebar-left/LeftMenu";
 import SideBar from '../../components/sidebar-right/SideBar';
 import { useSelector, useDispatch } from "react-redux";
-import { doneSelectPage, doneAddChoice } from "../../redux";
+import { doneSelectPage, doneAddChoice, onSelectPage } from "../../redux";
 import {Helmet} from "react-helmet";
 
 const CreatePage = () => {
 
+    const [pageTitle, setPageTitle] = useState('');
+    const [pageContent, setPageContent] = useState('Enter your chapter description here')
+    const [choiceContentDetail, setChoiceContentDetail] = useState('Enter your choice content');
+    const [choiceList, setChoiceList] = useState([]);
+    let mainContent = {};
+    let chapters = [];
+    let script = {};
+    let text = {}; 
+
     const {select, addChoice, pageName} = useSelector((state) => state.leftMenu);
     const dispatch = useDispatch();
 
-    let script = JSON.parse(localStorage.getItem('script'));
-    let mainContent = script.mainContent;
-    let chapters = script.chapters;
-    let text = {};
-    let choices = [];
-
-    if (pageName !== '') {
-        if (mainContent[pageName] !== undefined) {
-            text = mainContent[pageName];
-            if (text.choices !== undefined) {
-                choices = text.choices;
+    useEffect(() => {
+        script = JSON.parse(localStorage.getItem('script'))
+        mainContent = script.mainContent;
+        chapters = script.chapters;
+        console.log(mainContent)
+        if (pageName !== '') {
+            setPageTitle(pageName);
+            if (mainContent[pageName] !== undefined) {
+                text = mainContent[pageName];
+                if (text.content !== '') {
+                    setPageContent(text.content);
+                }
+                if (text.choices !== undefined) {
+                    setChoiceList(text.choices);
+                }
             }
         }
-    }
-    const titleData = JSON.parse(localStorage.getItem('script')).chapters.filter((title) => title === pageName).pop();
-    console.log('title', titleData)
-    const [pageTitle, setPageTitle] = useState(JSON.parse(localStorage.getItem('script')).chapters.filter((title) => title === pageName).pop());
-    const [pageContent, setPageContent] = useState(text.content || 'Enter your chapter description here')
-    const [choiceContent, setChoiceContent] = useState('Enter your choice content');
+    }, [pageName]);
 
     const changeSelectedBackToFalse = () => {
         dispatch(doneSelectPage);
     }
 
-    const showChoice = () => {
-        // return (
-        //     <input className='choice-input' contentEditable="true" value={choiceContent} onKeyPress={handleAddChoiceEnter} onChange={handleAddChoice}/>
-        // )
-        return <h1>Add Choice</h1>    }
-
-    const changeAddChoiceToFalse = () => {
-        showChoice();
-        dispatch(doneAddChoice);
-    }
-
     const handleTitleChange = (val) => {
         setPageTitle(val.target.value);
+        dispatch(onSelectPage(pageTitle));
+        // console.log('scruo', script.chapters)
+        
     }
     
     const handleTextContentChange = (e) => {
@@ -56,11 +56,13 @@ const CreatePage = () => {
     } 
 
     const handleChangeChoiceContent = (e) => {
-        setChoiceContent(e.target.value);
+        // setChoiceContent(e.target.value);
+        setChoiceContentDetail(e.target.value);
     }
 
     const handleAddChoice = (val) => {
-        setChoiceContent(val.target.value);
+        //setChoiceContent(val.target.value);
+        setChoiceContentDetail(val.target.value);
     }
 
     const handleTextTitleEnter = (e) => {
@@ -97,6 +99,25 @@ const CreatePage = () => {
         console.log('script2', script);
     }
 
+    const handleTitleChangeEnter = (e, oldData) => {
+        console.log(oldData);
+        var key = (e.keyCode ? e.keyCode : e.which);
+        // hit Enter (code of Enter btn = 13)
+        if (key == 13) {
+            script = JSON.parse(localStorage.getItem('script'))
+            console.log('pageTitle', pageTitle);
+            script.chapters.splice(script.chapters.indexOf(pageTitle), 1)
+            const oldText = script.mainContent[pageTitle];
+            console.log('oldText', script.mainContent);
+            delete script.mainContent[pageTitle];
+            script.mainContent[e.target.value] = oldText;
+            // script.chapters = script.chapters.filter((chapter) => chapter !== pageTitle)
+            script.chapters.push(e.target.value);
+            // setPageTitle(val.target.value);
+            console.log('scruo', script)
+        }
+    }
+
     const handleAddChoiceEnter = (e) => {
         var key = (e.keyCode ? e.keyCode : e.which);
         // hit Enter (code of Enter btn = 13)
@@ -104,8 +125,8 @@ const CreatePage = () => {
             const choice = {};
             // update to new Script after adding Choice
             choice.content = e.target.value;
-            choices.push(choice);
-            text.choices = choices;
+            // choices.push(choice);
+            // text.choices = choices;
             mainContent.pageTitle = text;
             script.mainContent = mainContent;
             localStorage.setItem('script', JSON.stringify(script));
@@ -116,19 +137,26 @@ const CreatePage = () => {
     }
 
     const handleChangeChoiceEnter = (e) => {
-        const oldChoice = choiceContent;
+        //const oldChoice = choiceContent;
         // update to localStorage new Chapter title
-        let existedChoice = choices.filter((choice) => choice.content === oldChoice);
-        existedChoice.content = choiceContent;
-        choices = choices.filter((choice) => choice.content !== oldChoice);
-        choices.push(existedChoice);
-        text.choices = choices;
-        mainContent.pageTitle = text;
-        script.mainContent = mainContent;
+        // let existedChoice = choices.filter((choice) => choice.content === oldChoice);
+        // existedChoice.content = choiceContent;
+        // choices = choices.filter((choice) => choice.content !== oldChoice);
+        // choices.push(existedChoice);
+        // text.choices = choices;
+        // mainContent.pageTitle = text;
+        // script.mainContent = mainContent;
         localStorage.setItem('script', JSON.stringify(script));
     }
 
-    console.log('add chocie', addChoice)
+    const addChoiceToList = () => { 
+        if (addChoice) {
+            dispatch(doneAddChoice());
+            choiceList.push({'content': 'Enter your new choice content!'})
+            setChoiceList(choiceList)
+        }
+    }
+
     return (
         <body className="create-page">
             <Helmet>
@@ -142,25 +170,30 @@ const CreatePage = () => {
             { select === true ? (
                 <div className='editor-canvas'>
                     <box className="page-desc-box">
-                        <input className="desc-label" type="text" contentEditable="true" onChange={(e) => handleTitleChange} value={pageTitle}/>
+                        <input className="desc-label" type="text" contentEditable="true" onChange={(e) => setTimeout(handleTitleChange(e), 20000)} value={pageTitle}/>
                         <textarea className="desc-input" contentEditable="true" value={pageContent} onKeyPress={handleTextContentEnter} onChange={handleTextContentChange}  />
                         <h5 className="desc-helper">Press "Ctrl" + "Enter" to temporarily save</h5>
                     </box>
 
-                    <box className="choice-box">
-                        {choices !== [] ? (
-                            <ul className='choice-list'>
-                                {
-                                    choices.map((choice) => {
-                                        setChoiceContent(choice.content);
+                    <box className="choice-box"> 
+                        {addChoice == true ? 
+                            (addChoiceToList())
+                        : 
+                            console.log('current choices', addChoice === true)
+                        }
+                        
+                        {choiceList !== [] ? 
+                            (<ul className='choice-list'>
+                                { 
+                                    choiceList.map((choice) => {
                                         return (
-                                            <input className='choice-input' id={choiceContent} contentEditable="true" value={choiceContent} onKeyPress={handleChangeChoiceEnter} onChange={handleChangeChoiceContent}/>
+                                            <input className='choice-input' key={choice.choiceContent} contentEditable="true" value={choiceContentDetail} onKeyPress={handleChangeChoiceEnter} onChange={handleChangeChoiceContent}/>
                                         )
                                     })
                                 }
-                            </ul>
-                        ) : <div></div>}
-                        {addChoice ? showChoice : <div></div>}
+                            </ul>)
+                            :<div></div>
+                        }
                     </box>
                     {changeSelectedBackToFalse}
                 </div>

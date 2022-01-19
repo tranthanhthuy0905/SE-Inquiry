@@ -246,7 +246,8 @@
 .choice-list {
   position: absolute;
   top: 40px;
-  height: 130px;
+  height: 200px;
+  overflow: auto
 }
 
 .choice-input {

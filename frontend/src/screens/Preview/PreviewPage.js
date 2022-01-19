@@ -18,7 +18,7 @@ const PreviewPage = ({loading, finish, text, error, fetchText}) => {
         navigate('/');
     }
     let scriptID = 'c09407e6-3cbd-464a-b7a9-a3f8dfbfdc2c';
-    let Uri = 'http://localhost:8080/api/v1/text/detail/';
+    let Uri = 'http://localhost:8080/api/public/text/detail/';
     useEffect(() => {
         const textUri = Uri + scriptID;
         fetchText(textUri);

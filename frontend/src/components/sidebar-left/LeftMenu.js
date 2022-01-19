@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import './LeftMenu.css';
 import {onSelectPage, addChoice} from '../../redux';
-import { ConsoleSqlOutlined } from '@ant-design/icons';
 
 const LeftMenu = () => {
-    console.log('localStorage', localStorage);
+    console.log('localStorage', JSON.parse(localStorage.getItem('script')));
     let pageName = '';
     let script = JSON.parse(localStorage.getItem("script"));
     const [chapterList, setChapterList] = useState(JSON.parse(localStorage.getItem('script')).chapters || []);
@@ -58,12 +57,10 @@ const LeftMenu = () => {
     }
 
     const addChoices = () => {
-        if (script.mainContent) {
-            if (select) {
-                dispatch(addChoice());
-            }
+        if (select) {
+            dispatch(addChoice());
         } else {
-            return alert('You should create or select a page before creating a choice');
+            return alert('You should select the page first.');
         }
     }
 
@@ -75,7 +72,7 @@ const LeftMenu = () => {
                     <button className='add-text' onClick={addTextSection}>Text +</button>
                     <button className='add-choice' onClick={addChoices}>Choice +</button>
                     <button className='add-stats' onClick={addStats}>Stats +</button>
-                    <button className='add-variable' onClick={addVar}>Variable +</button>
+                    <button className='add-variable' onClick={addVar}>Variable+</button>
                     <button className='new-button' onClick={addButton}>Button +</button>
                 </ul>
 

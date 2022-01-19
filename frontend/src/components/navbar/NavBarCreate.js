@@ -3,11 +3,13 @@ import {utilsList} from '../../data/navbarCreate';
 import logo from '../../assets/logo.png';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { useNavigate } from 'react-router-dom';
 import './navbar.css';
 import _ from 'lodash';
 
 const NavBarCreate = () => {
 
+    let navigate = useNavigate();
     const [name, setName] = useState(JSON.parse(localStorage.getItem('script')).scriptName);
 
     const handleNameChange = (e) => {
@@ -25,6 +27,7 @@ const NavBarCreate = () => {
 
     const handleSave = (e) => {
         localStorage.clear();
+        navigate('/')
     }
 
     return (

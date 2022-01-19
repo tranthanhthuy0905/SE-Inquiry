@@ -19,17 +19,16 @@ const LeftMenuReducer = (state = initialState, action) => {
                 ...state,
                 addChoice: true
             }
-        case DONE_SELECT_PAGE:
-            return {
-                ...state,
-                select: false
-            }
         case DONE_ADD_CHOICE:
             return {
                 ...state,
                 addChoice: false
             }
-
+        case DONE_SELECT_PAGE:
+            return {
+                ...state,
+                select: false
+            }
         default: return state
     }
 }
