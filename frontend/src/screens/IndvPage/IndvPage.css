@@ -94,9 +94,12 @@ body{
 }
 
 .ratings-container {
-  position: absolute;
+  /* position: absolute; */
   width: 100px;
   height: 28px;
+  top: 10px;
+  left: 100px;
+  display: inline-block;
 }
 
 .ratings-container img {
@@ -215,20 +218,19 @@ body{
   color: #999999;
 }
 
-/* .star-idv{
-  position: absolute;
+.star-idv{
   width: 28px;
   height: 28px;
-  left: 163px;
-  top: 560px;
-  display: inline-block;
-} */
+  padding: 5px;
+  left: 100px;
+  top: 100px;
+}
 
 .rating-tag-idv{
     /* Ratings */
     position: absolute;
     width: 144.52px;
-    height: 89.12px;
+    height: 20px;
     left: 20px;
     top: 0px;
 

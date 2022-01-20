@@ -45,6 +45,8 @@ const LeftMenu = () => {
         while (pageName == null || pageName == '') {
             pageName = prompt('Please enter the name of this page', '')
         }
+        script = JSON.parse(localStorage.getItem('script'));
+        console.log('chapters', script)
         let availableList = script.chapters;
         availableList.push(pageName);
         script.chapters = availableList;

@@ -54,7 +54,7 @@ const NavBarCreate = () => {
                 </div>
                 <div className='creator-footer'>
                     <button className='cancel' type='button' onClick={handleCancel}>Cancel</button>
-                    <button className='save' type='submit' onSubmit={handleSave}>Save</button>
+                    <button className='save' type='submit' onClick={handleSave}>Save</button>
                 </div>
             </div>
         </nav>

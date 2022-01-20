@@ -47,14 +47,22 @@ const IndvPage = () => {
               </div>         
               <div className='story-rating-idv'>
                 <p className="rating-tag-idv">Ratings</p>
-                <ul className='ratings-container'>
+                {/* <div className="ratings-container"> */}
+                  <img className='star-idv' src={Star} />
+                  <img className='star-idv' src={Star} />
+                  <img className='star-idv' src={Star} />
+                  <img className='star-idv' src={Star} />
+                  <img className='star-idv' src={Star} />
+                {/* </div> */}
+               
+                {/* <ul className='ratings-container'>
                   {
                     ratingList.map((rate) => {
                         return (<img className='star-idv' src={Star} />)
                       }
                     )
                   }
-                </ul>
+                </ul> */}
                 <span className="rating-idv">{rating}</span>  
               </div>
  

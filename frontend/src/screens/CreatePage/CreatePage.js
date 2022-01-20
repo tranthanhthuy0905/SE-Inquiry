@@ -17,6 +17,7 @@ const CreatePage = () => {
     let chapters = [];
     let script = {};
     let text = {}; 
+    let choiceId = -1;
 
     const {select, addChoice, pageName} = useSelector((state) => state.leftMenu);
     const dispatch = useDispatch();
@@ -25,20 +26,24 @@ const CreatePage = () => {
         script = JSON.parse(localStorage.getItem('script'))
         mainContent = script.mainContent;
         chapters = script.chapters;
-        console.log(mainContent)
         if (pageName !== '') {
             setPageTitle(pageName);
             if (mainContent[pageName] !== undefined) {
                 text = mainContent[pageName];
+                console.log('textxttt', text)
                 if (text.content !== '') {
                     setPageContent(text.content);
+                } else {
+                    setPageContent('Enter your chapter description here')
                 }
                 if (text.choices !== undefined) {
                     setChoiceList(text.choices);
+                } else {
+                    setChoiceList([]);
                 }
             }
         }
-    }, [pageName]);
+    }, [pageName, select]);
 
     const changeSelectedBackToFalse = () => {
         dispatch(doneSelectPage);
@@ -47,17 +52,27 @@ const CreatePage = () => {
     const handleTitleChange = (val) => {
         setPageTitle(val.target.value);
         dispatch(onSelectPage(pageTitle));
-        // console.log('scruo', script.chapters)
-        
+        // script = JSON.parse(localStorage.getItem('script'))
+        // const oldChapters = script.chapters;
+        // oldChapters.splice()
+        // script.mainContent[pageTitle].content = pageContent;
+        // localStorage.setItem('script', JSON.stringify(script))
+        // console.log('aaaaaa', script)
     }
     
     const handleTextContentChange = (e) => {
         setPageContent(e.target.value);
+        script = JSON.parse(localStorage.getItem('script'))
+        script.mainContent[pageTitle].content = pageContent;
+        localStorage.setItem('script', JSON.stringify(script))
+        console.log('aaaaaa', script)
     } 
 
     const handleChangeChoiceContent = (e) => {
         // setChoiceContent(e.target.value);
         setChoiceContentDetail(e.target.value);
+        choiceList[e.target.id].content = choiceContentDetail;
+        console.log('choiceListAfter', choiceList);
     }
 
     const handleAddChoice = (val) => {
@@ -92,6 +107,7 @@ const CreatePage = () => {
             text.content = e.target.value;
             mainContent.pageTitle = text;
             script.mainContent = mainContent;
+            console.log('sc', script)
             localStorage.setItem('script', JSON.stringify(script));
         }
         console.log('text2', text);
@@ -103,19 +119,19 @@ const CreatePage = () => {
         console.log(oldData);
         var key = (e.keyCode ? e.keyCode : e.which);
         // hit Enter (code of Enter btn = 13)
-        if (key == 13) {
-            script = JSON.parse(localStorage.getItem('script'))
-            console.log('pageTitle', pageTitle);
-            script.chapters.splice(script.chapters.indexOf(pageTitle), 1)
-            const oldText = script.mainContent[pageTitle];
-            console.log('oldText', script.mainContent);
-            delete script.mainContent[pageTitle];
-            script.mainContent[e.target.value] = oldText;
-            // script.chapters = script.chapters.filter((chapter) => chapter !== pageTitle)
-            script.chapters.push(e.target.value);
-            // setPageTitle(val.target.value);
-            console.log('scruo', script)
-        }
+        // if (key == 13) {
+        //     script = JSON.parse(localStorage.getItem('script'))
+        //     console.log('pageTitle', pageTitle);
+        //     script.chapters.splice(script.chapters.indexOf(pageTitle), 1)
+        //     const oldText = script.mainContent[pageTitle];
+        //     console.log('oldText', script.mainContent);
+        //     delete script.mainContent[pageTitle];
+        //     script.mainContent[e.target.value] = oldText;
+        //     // script.chapters = script.chapters.filter((chapter) => chapter !== pageTitle)
+        //     script.chapters.push(e.target.value);
+        //     // setPageTitle(val.target.value);
+        //     console.log('scruo', script)
+        // }
     }
 
     const handleAddChoiceEnter = (e) => {
@@ -152,8 +168,9 @@ const CreatePage = () => {
     const addChoiceToList = () => { 
         if (addChoice) {
             dispatch(doneAddChoice());
-            choiceList.push({'content': 'Enter your new choice content!'})
-            setChoiceList(choiceList)
+            setChoiceContentDetail('Enter your new choice content!');
+            choiceList.push({'content': choiceContentDetail})
+            console.log('chchgchgvc', choiceList)
         }
     }
 
@@ -171,7 +188,7 @@ const CreatePage = () => {
                 <div className='editor-canvas'>
                     <box className="page-desc-box">
                         <input className="desc-label" type="text" contentEditable="true" onChange={(e) => setTimeout(handleTitleChange(e), 20000)} value={pageTitle}/>
-                        <textarea className="desc-input" contentEditable="true" value={pageContent} onKeyPress={handleTextContentEnter} onChange={handleTextContentChange}  />
+                        <textarea className="desc-input" contentEditable="true" value={pageContent} onChange={(e) => setTimeout(handleTextContentChange(e), 20000)}  />
                         <h5 className="desc-helper">Press "Ctrl" + "Enter" to temporarily save</h5>
                     </box>
 
@@ -185,9 +202,9 @@ const CreatePage = () => {
                         {choiceList !== [] ? 
                             (<ul className='choice-list'>
                                 { 
-                                    choiceList.map((choice) => {
+                                    choiceList.map((choice, index) => {
                                         return (
-                                            <input className='choice-input' key={choice.choiceContent} contentEditable="true" value={choiceContentDetail} onKeyPress={handleChangeChoiceEnter} onChange={handleChangeChoiceContent}/>
+                                            <input className='choice-input' key={choice.choiceContent} id={index} contentEditable="true" value={choiceContentDetail} onChange={handleChangeChoiceContent}/>
                                         )
                                     })
                                 }
